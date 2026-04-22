@@ -4,50 +4,64 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Living With Ease — Website Redesign Proposal</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --sage: #99ad68;
-  --sage-light: #b8c990;
-  --sage-dark: #7a8c4f;
-  --cream: #faf8f4;
-  --warm-white: #fffefb;
-  --charcoal: #2d2d2d;
-  --text: #3a3a3a;
-  --text-light: #6b6b6b;
-  --gold: #c9a96e;
-  --gold-light: #e8d5a8;
+  --sage: #8a9a5b;
+  --sage-deep: #6b7a42;
+  --sage-muted: #a8b77d;
+  --sage-pale: #d4dcc0;
+  --gold: #c4a55a;
+  --gold-warm: #d4b86a;
+  --cream: #f8f6f1;
+  --cream-warm: #f3efe6;
+  --parchment: #ece7db;
+  --charcoal: #1a1a1a;
+  --text: #2e2e2e;
+  --text-soft: #5a5a5a;
+  --text-muted: #8a8a8a;
+  --white: #fffefb;
   --blush: #e8d5c4;
-  --border: #e5e0d8;
-  --shadow: rgba(0,0,0,0.06);
+  --terra: #c4957a;
+  --border: #e0dbd2;
 }
 
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Outfit', sans-serif;
   color: var(--text);
   background: var(--cream);
   line-height: 1.7;
   font-size: 16px;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
 }
 
 h1, h2, h3, h4 {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Cormorant Garamond', serif;
   color: var(--charcoal);
-  line-height: 1.3;
+  line-height: 1.15;
+  font-weight: 300;
 }
 
-.container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+.container { max-width: 960px; margin: 0 auto; padding: 0 6%; }
 
-/* Hero */
+/* ============================================
+   HERO — Full-bleed, art-directed
+   ============================================ */
 .hero {
-  background: linear-gradient(135deg, var(--sage-dark) 0%, var(--sage) 50%, var(--sage-light) 100%);
-  color: white;
-  padding: 80px 24px 60px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
+  background: var(--charcoal);
+  color: var(--cream);
+  padding: 12% 8%;
   position: relative;
   overflow: hidden;
 }
@@ -55,675 +69,1038 @@ h1, h2, h3, h4 {
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  opacity: 0.3;
+  background: radial-gradient(ellipse at 30% 20%, rgba(138,154,91,0.15) 0%, transparent 60%),
+              radial-gradient(ellipse at 70% 80%, rgba(196,165,90,0.1) 0%, transparent 50%);
 }
-.hero-content { position: relative; z-index: 1; }
-.hero h1 { font-size: 2.6rem; margin-bottom: 12px; font-weight: 700; }
-.hero .subtitle { font-size: 1.15rem; opacity: 0.92; font-weight: 300; max-width: 600px; margin: 0 auto 8px; }
-.hero .client { font-size: 0.95rem; opacity: 0.75; margin-top: 16px; }
-.hero .badge {
-  display: inline-block;
-  background: rgba(255,255,255,0.2);
-  backdrop-filter: blur(10px);
-  padding: 6px 18px;
-  border-radius: 20px;
-  font-size: 0.82rem;
-  letter-spacing: 0.05em;
-  margin-bottom: 24px;
+.hero-content { position: relative; z-index: 1; max-width: 700px; }
+.hero-eyebrow {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.25em;
   text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 400;
+  margin-bottom: 32px;
+}
+.hero h1 {
+  font-size: clamp(2.8rem, 6vw, 4.5rem);
+  color: var(--cream);
+  font-weight: 300;
+  margin-bottom: 24px;
+  letter-spacing: -0.02em;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--sage-muted);
+}
+.hero .subtitle {
+  font-size: 1.05rem;
+  color: rgba(248,246,241,0.65);
+  font-weight: 200;
+  max-width: 520px;
+  margin: 0 auto 20px;
+  line-height: 1.8;
+}
+.hero .meta {
+  font-size: 0.78rem;
+  color: rgba(248,246,241,0.35);
+  margin-top: 48px;
+  letter-spacing: 0.08em;
+}
+.hero .divider-line {
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+  margin: 40px auto 0;
 }
 
-/* Nav */
+/* ============================================
+   NAV — Minimal, editorial
+   ============================================ */
 .nav {
-  background: var(--warm-white);
+  background: var(--white);
   border-bottom: 1px solid var(--border);
-  padding: 14px 24px;
+  padding: 0;
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: 0 2px 12px var(--shadow);
 }
 .nav-inner {
-  max-width: 900px;
+  max-width: 960px;
   margin: 0 auto;
   display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
+  gap: 0;
   justify-content: center;
+  padding: 0 4%;
 }
 .nav a {
-  color: var(--text-light);
+  color: var(--text-muted);
   text-decoration: none;
-  font-size: 0.85rem;
-  font-weight: 500;
-  padding: 6px 14px;
-  border-radius: 6px;
-  transition: all 0.2s;
+  font-size: 0.72rem;
+  font-weight: 400;
+  padding: 18px 20px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: color 0.3s;
+  border-bottom: 2px solid transparent;
 }
-.nav a:hover { background: var(--sage); color: white; }
+.nav a:hover {
+  color: var(--sage-deep);
+  border-bottom-color: var(--sage);
+}
 
-/* Sections */
+/* ============================================
+   SECTIONS — Generous spacing, editorial
+   ============================================ */
 .section {
-  padding: 56px 0;
+  padding: 10% 0 8%;
   border-bottom: 1px solid var(--border);
 }
-.section:last-child { border-bottom: none; }
-.section-label {
-  font-family: 'Poppins', sans-serif;
-  font-size: 0.75rem;
+.section:last-of-type { border-bottom: none; }
+
+.section-eyebrow {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.68rem;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--sage);
-  font-weight: 600;
-  margin-bottom: 8px;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  font-weight: 500;
+  margin-bottom: 16px;
 }
-.section h2 { font-size: 1.9rem; margin-bottom: 20px; }
-.section h3 { font-size: 1.35rem; margin-bottom: 12px; }
-.section p { margin-bottom: 16px; color: var(--text-light); }
+.section h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 28px;
+  letter-spacing: -0.01em;
+}
+.section h2 em { font-style: italic; color: var(--sage-deep); }
+.section p.lead {
+  font-size: 1.05rem;
+  color: var(--text-soft);
+  max-width: 620px;
+  line-height: 1.85;
+  font-weight: 300;
+}
 
-/* Brand Guide */
-.color-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: 16px;
-  margin: 24px 0;
-}
-.color-card {
-  border-radius: 12px;
-  overflow: hidden;
-  background: white;
-  box-shadow: 0 2px 8px var(--shadow);
-  border: 1px solid var(--border);
-}
-.color-swatch { height: 80px; }
-.color-info { padding: 12px; }
-.color-info .name { font-weight: 600; font-size: 0.85rem; }
-.color-info .hex { font-size: 0.8rem; color: var(--text-light); font-family: monospace; }
-
-.font-sample {
-  background: white;
-  border-radius: 12px;
-  padding: 24px;
-  margin: 12px 0;
-  border: 1px solid var(--border);
-}
-.font-sample .label { font-size: 0.75rem; color: var(--sage); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; font-family: 'Poppins'; }
-.font-sample .demo-heading { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--charcoal); margin-bottom: 4px; }
-.font-sample .demo-body { font-family: 'Poppins', sans-serif; font-size: 1rem; color: var(--text-light); }
-
-.tone-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 16px;
-  margin: 20px 0;
-}
-.tone-card {
-  background: white;
-  border-radius: 12px;
-  padding: 20px;
-  border: 1px solid var(--border);
-  text-align: center;
-}
-.tone-card .icon { font-size: 1.5rem; margin-bottom: 8px; }
-.tone-card .title { font-weight: 600; font-size: 0.9rem; margin-bottom: 4px; }
-.tone-card .desc { font-size: 0.82rem; color: var(--text-light); }
-
-/* Proposed Changes */
-.change-card {
-  background: white;
-  border-radius: 16px;
-  padding: 32px;
-  margin: 24px 0;
-  border: 1px solid var(--border);
-  box-shadow: 0 4px 16px var(--shadow);
-}
-.change-card .change-number {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  background: var(--sage);
-  color: white;
-  border-radius: 50%;
-  font-weight: 700;
-  font-size: 0.85rem;
-  margin-bottom: 12px;
-}
-.change-card h3 { margin-bottom: 8px; }
-.change-card .impact {
-  display: inline-block;
-  background: var(--gold-light);
-  color: var(--charcoal);
-  padding: 3px 10px;
-  border-radius: 4px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  margin-bottom: 12px;
-}
-.change-card .description { color: var(--text-light); margin-bottom: 16px; line-height: 1.7; }
-.change-card .before-after {
+/* ============================================
+   OVERVIEW — Art-directed intro
+   ============================================ */
+.overview-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  margin: 16px 0;
+  gap: 48px;
+  margin-top: 48px;
+  align-items: start;
 }
-.change-card .ba-col {
-  background: var(--cream);
-  border-radius: 8px;
-  padding: 16px;
+.overview-stat {
+  text-align: center;
+  padding: 32px 20px;
+  border: 1px solid var(--border);
+  border-radius: 2px;
 }
-.change-card .ba-col .ba-label {
-  font-size: 0.7rem;
+.overview-stat .number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3rem;
+  color: var(--sage-deep);
+  line-height: 1;
+  font-weight: 300;
+}
+.overview-stat .label {
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-weight: 700;
-  margin-bottom: 8px;
+  color: var(--text-muted);
+  margin-top: 8px;
+  font-weight: 400;
 }
-.change-card .ba-col.before .ba-label { color: #c44; }
-.change-card .ba-col.after .ba-label { color: var(--sage-dark); }
-.change-card .ba-col ul {
-  list-style: none;
-  padding: 0;
-  font-size: 0.88rem;
-  color: var(--text-light);
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-top: 48px;
 }
-.change-card .ba-col ul li { padding: 3px 0; padding-left: 16px; position: relative; }
-.change-card .ba-col.before ul li::before { content: '−'; position: absolute; left: 0; color: #c44; font-weight: 700; }
-.change-card .ba-col.after ul li::before { content: '+'; position: absolute; left: 0; color: var(--sage-dark); font-weight: 700; }
 
-/* Comment Fields */
+/* ============================================
+   BRAND GUIDE — Visual swatches, editorial
+   ============================================ */
+.color-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin: 40px 0;
+  overflow: hidden;
+  border-radius: 2px;
+}
+.color-card {
+  position: relative;
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px;
+  transition: transform 0.3s;
+}
+.color-card:hover { transform: scale(1.02); z-index: 1; }
+.color-card .name {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: white;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+}
+.color-card .hex {
+  font-size: 0.7rem;
+  font-family: 'Outfit', monospace;
+  color: rgba(255,255,255,0.75);
+  letter-spacing: 0.05em;
+}
+.color-card.dark-text .name,
+.color-card.dark-text .hex { color: var(--charcoal); text-shadow: none; }
+.color-card.dark-text .hex { color: var(--text-soft); }
+
+.font-showcase {
+  margin: 40px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+}
+.font-panel {
+  padding: 48px 32px;
+  background: var(--white);
+  border: 1px solid var(--border);
+}
+.font-panel .role {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+.font-panel .sample-display {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  color: var(--charcoal);
+  line-height: 1.2;
+  font-weight: 300;
+}
+.font-panel .sample-body {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.95rem;
+  color: var(--text-soft);
+  line-height: 1.8;
+  font-weight: 300;
+}
+
+.tone-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+  margin: 40px 0;
+}
+.tone-cell {
+  padding: 40px 32px;
+  background: var(--white);
+  border: 1px solid var(--border);
+}
+.tone-cell .tone-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  color: var(--charcoal);
+  margin-bottom: 8px;
+  font-weight: 400;
+}
+.tone-cell .tone-desc {
+  font-size: 0.85rem;
+  color: var(--text-soft);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+/* ============================================
+   PROPOSED CHANGES — Narrative cards
+   ============================================ */
+.change-card {
+  margin: 56px 0;
+  padding: 0;
+  position: relative;
+}
+.change-card .change-header {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 0;
+  align-items: start;
+  margin-bottom: 24px;
+}
+.change-card .change-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3.5rem;
+  color: var(--sage-pale);
+  line-height: 1;
+  font-weight: 300;
+}
+.change-card .change-title-group { padding-top: 8px; }
+.change-card h3 {
+  font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+  font-weight: 400;
+  margin-bottom: 6px;
+  line-height: 1.25;
+}
+.change-card .impact-tag {
+  display: inline-block;
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-weight: 500;
+}
+.change-card .change-body {
+  padding-left: 80px;
+}
+.change-card .description {
+  color: var(--text-soft);
+  margin-bottom: 28px;
+  line-height: 1.85;
+  font-weight: 300;
+  max-width: 640px;
+}
+
+.comparison {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  margin-bottom: 28px;
+}
+.comp-col {
+  padding: 28px 24px;
+}
+.comp-col.before { background: rgba(196,149,122,0.08); }
+.comp-col.after { background: rgba(138,154,91,0.08); }
+.comp-col .comp-label {
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.comp-col.before .comp-label { color: var(--terra); }
+.comp-col.after .comp-label { color: var(--sage-deep); }
+.comp-col ul {
+  list-style: none;
+  font-size: 0.88rem;
+  color: var(--text-soft);
+  font-weight: 300;
+}
+.comp-col ul li {
+  padding: 5px 0 5px 20px;
+  position: relative;
+  line-height: 1.6;
+}
+.comp-col.before ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 13px;
+  width: 8px;
+  height: 1px;
+  background: var(--terra);
+}
+.comp-col.after ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 13px;
+  width: 8px;
+  height: 1px;
+  background: var(--sage-deep);
+}
+
+/* ============================================
+   FORM ELEMENTS — Refined
+   ============================================ */
 .comment-area {
-  margin-top: 16px;
-  padding-top: 16px;
-  border-top: 1px dashed var(--border);
+  margin-top: 24px;
+  padding-left: 80px;
 }
 .comment-area label {
   display: block;
-  font-size: 0.82rem;
-  color: var(--sage-dark);
-  font-weight: 500;
-  margin-bottom: 6px;
+  font-size: 0.68rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 400;
+  margin-bottom: 8px;
 }
 textarea, input[type="text"] {
   width: 100%;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 12px;
-  font-family: 'Poppins', sans-serif;
-  font-size: 0.9rem;
-  resize: vertical;
-  transition: border-color 0.2s;
-  background: var(--cream);
+  border: none;
+  border-bottom: 1px solid var(--border);
+  padding: 12px 0;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 300;
+  resize: none;
+  transition: border-color 0.3s;
+  background: transparent;
+  color: var(--text);
 }
 textarea:focus, input[type="text"]:focus {
   outline: none;
-  border-color: var(--sage);
-  box-shadow: 0 0 0 3px rgba(153, 173, 104, 0.15);
+  border-bottom-color: var(--sage);
+}
+textarea::placeholder, input::placeholder {
+  color: var(--text-muted);
+  font-weight: 200;
 }
 
-/* Assumptions */
-.assumption-card {
-  background: white;
-  border-radius: 12px;
-  padding: 20px 24px;
-  margin: 12px 0;
-  border-left: 4px solid var(--gold);
-  box-shadow: 0 2px 8px var(--shadow);
+/* ============================================
+   ASSUMPTIONS — Minimal cards
+   ============================================ */
+.assumption-item {
+  padding: 28px 0;
+  border-bottom: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 0;
+  align-items: start;
 }
-.assumption-card .assumption-text {
+.assumption-item:last-child { border-bottom: none; }
+.assumption-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  color: var(--sage-pale);
+  font-weight: 300;
+}
+.assumption-text {
   font-size: 0.95rem;
   color: var(--text);
-  margin-bottom: 10px;
-  font-weight: 500;
+  margin-bottom: 12px;
+  line-height: 1.7;
+  font-weight: 400;
 }
-.assumption-card input[type="text"] {
-  background: var(--cream);
+.assumption-item input[type="text"] {
+  border-bottom-color: var(--parchment);
 }
 
-/* Submit */
+/* ============================================
+   NOTES + SUBMIT — Grand finale
+   ============================================ */
+.notes-section textarea {
+  min-height: 140px;
+  border: 1px solid var(--border);
+  padding: 20px;
+  background: var(--white);
+  border-radius: 2px;
+}
+.notes-section textarea:focus {
+  border-color: var(--sage);
+}
+
 .submit-section {
   text-align: center;
-  padding: 60px 0;
+  padding: 12% 0 10%;
+  background: var(--charcoal);
+  color: var(--cream);
+  margin: 0 -100vw;
+  padding-left: 100vw;
+  padding-right: 100vw;
 }
-.submit-section h2 { margin-bottom: 12px; }
-.submit-section p { color: var(--text-light); margin-bottom: 28px; }
+.submit-section h2 {
+  color: var(--cream);
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 16px;
+}
+.submit-section p {
+  color: rgba(248,246,241,0.55);
+  font-weight: 200;
+  margin-bottom: 40px;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.8;
+}
 
 .btn-submit {
-  background: linear-gradient(135deg, var(--sage-dark), var(--sage));
-  color: white;
-  border: none;
-  padding: 16px 48px;
-  font-size: 1.05rem;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 600;
-  border-radius: 50px;
+  background: transparent;
+  color: var(--cream);
+  border: 1px solid var(--gold);
+  padding: 18px 56px;
+  font-size: 0.72rem;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
   cursor: pointer;
-  transition: all 0.3s;
-  box-shadow: 0 4px 16px rgba(153, 173, 104, 0.3);
+  transition: all 0.4s;
 }
 .btn-submit:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(153, 173, 104, 0.4);
+  background: var(--gold);
+  color: var(--charcoal);
 }
-.btn-submit:active { transform: translateY(0); }
 
 .success-msg {
   display: none;
-  background: var(--sage);
-  color: white;
-  padding: 24px;
-  border-radius: 12px;
-  margin-top: 24px;
+  color: var(--sage-muted);
+  padding: 28px;
+  margin-top: 32px;
   font-size: 1.05rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  letter-spacing: 0.02em;
 }
 
-/* Additional Notes */
-.notes-section textarea { min-height: 150px; background: white; }
-
-/* Footer */
+/* ============================================
+   FOOTER
+   ============================================ */
 .footer {
   text-align: center;
-  padding: 32px 24px;
-  font-size: 0.82rem;
-  color: var(--text-light);
-  border-top: 1px solid var(--border);
+  padding: 40px 24px;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
-/* Responsive */
-@media (max-width: 640px) {
-  .hero h1 { font-size: 1.9rem; }
-  .change-card .before-after { grid-template-columns: 1fr; }
-  .color-grid { grid-template-columns: repeat(3, 1fr); }
-  .change-card { padding: 20px; }
-  .nav a { font-size: 0.78rem; padding: 4px 10px; }
+/* ============================================
+   DIVIDERS
+   ============================================ */
+.section-divider {
+  width: 40px;
+  height: 1px;
+  background: var(--gold);
+  margin: 32px 0;
+}
+
+/* ============================================
+   DESIGN REFERENCE NOTE
+   ============================================ */
+.ref-note {
+  background: var(--sage-deep);
+  color: var(--cream);
+  padding: 6% 0;
+}
+.ref-note .container { max-width: 700px; }
+.ref-note h3 {
+  font-size: 1.6rem;
+  color: var(--cream);
+  margin-bottom: 16px;
+  font-weight: 300;
+}
+.ref-note p {
+  font-size: 0.92rem;
+  color: rgba(248,246,241,0.75);
+  line-height: 1.85;
+  font-weight: 300;
+}
+.ref-note ul {
+  margin: 20px 0;
+  padding-left: 0;
+  list-style: none;
+}
+.ref-note ul li {
+  padding: 6px 0 6px 20px;
+  position: relative;
+  font-size: 0.88rem;
+  color: rgba(248,246,241,0.7);
+  font-weight: 300;
+}
+.ref-note ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 14px;
+  width: 8px;
+  height: 1px;
+  background: var(--gold);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 700px) {
+  .hero { padding: 20% 8%; }
+  .overview-grid { grid-template-columns: 1fr; gap: 24px; }
+  .stats-row { grid-template-columns: repeat(2, 1fr); }
+  .color-grid { grid-template-columns: repeat(2, 1fr); }
+  .font-showcase { grid-template-columns: 1fr; }
+  .tone-grid { grid-template-columns: 1fr; }
+  .comparison { grid-template-columns: 1fr; }
+  .change-card .change-header { grid-template-columns: 48px 1fr; }
+  .change-card .change-num { font-size: 2.5rem; }
+  .change-card .change-body { padding-left: 48px; }
+  .comment-area { padding-left: 48px; }
+  .nav a { font-size: 0.65rem; padding: 14px 10px; letter-spacing: 0.08em; }
 }
 </style>
 </head>
 <body>
 
-<!-- Hero -->
+<!-- ============================================
+     HERO
+     ============================================ -->
 <section class="hero">
   <div class="hero-content">
-    <div class="badge">Website Redesign Proposal</div>
-    <h1>Living With Ease</h1>
-    <p class="subtitle">A strategic redesign to better serve Jayne Steinberg's transformational healing practice and convert more aligned clients.</p>
-    <p class="client">Prepared by ArkData &mdash; April 2026</p>
+    <div class="hero-eyebrow">Website Redesign Proposal</div>
+    <h1>Living With <em>Ease</em></h1>
+    <p class="subtitle">A strategic redesign for Jayne Steinberg's transformational healing practice &mdash; built to convert aligned clients and honor the depth of the work.</p>
+    <p class="meta">Prepared by ArkData &bull; April 2026</p>
+    <div class="divider-line"></div>
   </div>
 </section>
 
-<!-- Nav -->
+<!-- NAV -->
 <nav class="nav">
   <div class="nav-inner">
-    <a href="#brand">Brand Guide</a>
-    <a href="#changes">Proposed Changes</a>
+    <a href="#overview">Overview</a>
+    <a href="#brand">Brand</a>
+    <a href="#changes">Changes</a>
     <a href="#assumptions">Assumptions</a>
-    <a href="#notes">Additional Notes</a>
-    <a href="#submit">Submit Feedback</a>
+    <a href="#notes">Notes</a>
+    <a href="#submit">Submit</a>
   </div>
 </nav>
 
-<!-- Current Site Overview -->
-<section class="section">
+<!-- ============================================
+     SITE OVERVIEW
+     ============================================ -->
+<section class="section" id="overview">
   <div class="container">
-    <div class="section-label">Current State</div>
-    <h2>Site Analysis Summary</h2>
-    <p>livingwithease.com is currently hosted on GoDaddy Website Builder. The site has 6 pages: Home, About, Soul Aligned Reset, Testimonials, Beyond Manifestation, and Contact Us. Jayne Steinberg, MA, is an energy alchemist and transformational coach based outside Boston, Massachusetts. She helps high achievers through individualized 3-6 month journeys using her proprietary "Big T Truth Method" and Three Pillar Framework (Energy Health, Energy Alignment, Energy Blueprint).</p>
-    <p>The site has strong testimonials (11 detailed client stories), clear expertise positioning, and a well-defined methodology. However, there are significant opportunities to improve conversion, visual hierarchy, and the overall user experience to better match the caliber of Jayne's work.</p>
+    <div class="section-eyebrow">Current State</div>
+    <h2>What We <em>Found</em></h2>
+    <p class="lead">livingwithease.com is currently built on GoDaddy Website Builder with 6 pages. Jayne Steinberg, MA, is an integrative energy healer and transformational coach based outside Boston. She helps high achievers through her proprietary Big T Truth Method and Three Pillar Framework &mdash; Energy Health, Energy Alignment, and Energy Blueprint.</p>
+
+    <div class="section-divider"></div>
+
+    <div class="stats-row">
+      <div class="overview-stat">
+        <div class="number">6</div>
+        <div class="label">Pages</div>
+      </div>
+      <div class="overview-stat">
+        <div class="number">11</div>
+        <div class="label">Testimonials</div>
+      </div>
+      <div class="overview-stat">
+        <div class="number">12+</div>
+        <div class="label">Fonts Loading</div>
+      </div>
+      <div class="overview-stat">
+        <div class="number">1</div>
+        <div class="label">Broken Page</div>
+      </div>
+    </div>
+
+    <div style="margin-top: 48px;">
+      <p class="lead">The site has strong testimonials, clear expertise positioning, and a well-defined methodology. But the GoDaddy template undermines the caliber of Jayne's work. The design doesn't match the transformation she delivers.</p>
+    </div>
   </div>
 </section>
 
-<!-- Brand Guide -->
+<!-- ============================================
+     DESIGN DIRECTION NOTE
+     ============================================ -->
+<section class="ref-note">
+  <div class="container">
+    <h3>Design Direction</h3>
+    <p>This proposal follows an art-directed, narrative-driven approach &mdash; not a template-based redesign. Inspired by the kind of bespoke, emotionally resonant work Jamie Crowley builds for her clients, the new site will feature:</p>
+    <ul>
+      <li>Distinctive, intentional typography (not generic Google Fonts defaults)</li>
+      <li>Full-bleed imagery with authentic photography as the emotional core</li>
+      <li>Percentage-based spacing for a proportional, editorial feel at every viewport</li>
+      <li>A restrained color palette (3-4 accents) with warm neutrals</li>
+      <li>Narrative flow &mdash; storytelling copy that guides visitors through a journey</li>
+      <li>Subtle, purposeful animation (scroll reveals, hover states) not decorative motion</li>
+      <li>Every page art-directed individually, not stamped from one layout</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================================
+     BRAND GUIDE
+     ============================================ -->
 <section class="section" id="brand">
   <div class="container">
-    <div class="section-label">Extracted + Recommended</div>
-    <h2>Brand Guide</h2>
+    <div class="section-eyebrow">Extracted + Recommended</div>
+    <h2>Brand <em>Identity</em></h2>
+    <p class="lead">We're keeping the earthy, grounded soul of the current brand while elevating it to match the depth of Jayne's transformational work.</p>
 
-    <h3>Color Palette</h3>
-    <p>The current site uses sage green (#99ad68) as the primary theme color. We recommend keeping this as the anchor and building a more cohesive palette around it.</p>
+    <h3 style="font-size: 1.2rem; margin-top: 48px; margin-bottom: 8px; font-weight: 400;">Color Palette</h3>
+    <p style="font-size: 0.88rem; color: var(--text-soft); margin-bottom: 8px; font-weight: 300;">The current theme color #99ad68 is kept and deepened. We've built a cohesive palette around it with warm golds and earthy neutrals.</p>
 
     <div class="color-grid">
-      <div class="color-card">
-        <div class="color-swatch" style="background: #99ad68;"></div>
-        <div class="color-info">
-          <div class="name">Sage Green</div>
-          <div class="hex">#99ad68 — Primary</div>
-        </div>
+      <div class="color-card" style="background: #8a9a5b;">
+        <div class="name">Sage</div>
+        <div class="hex">#8a9a5b</div>
       </div>
-      <div class="color-card">
-        <div class="color-swatch" style="background: #7a8c4f;"></div>
-        <div class="color-info">
-          <div class="name">Deep Sage</div>
-          <div class="hex">#7a8c4f — Accent</div>
-        </div>
+      <div class="color-card" style="background: #6b7a42;">
+        <div class="name">Deep Sage</div>
+        <div class="hex">#6b7a42</div>
       </div>
-      <div class="color-card">
-        <div class="color-swatch" style="background: #c9a96e;"></div>
-        <div class="color-info">
-          <div class="name">Warm Gold</div>
-          <div class="hex">#c9a96e — Highlight</div>
-        </div>
+      <div class="color-card" style="background: #c4a55a;">
+        <div class="name">Warm Gold</div>
+        <div class="hex">#c4a55a</div>
       </div>
-      <div class="color-card">
-        <div class="color-swatch" style="background: #faf8f4;"></div>
-        <div class="color-info">
-          <div class="name">Warm Cream</div>
-          <div class="hex">#faf8f4 — Background</div>
-        </div>
+      <div class="color-card" style="background: #c4957a;">
+        <div class="name">Terracotta</div>
+        <div class="hex">#c4957a</div>
       </div>
-      <div class="color-card">
-        <div class="color-swatch" style="background: #2d2d2d;"></div>
-        <div class="color-info">
-          <div class="name">Charcoal</div>
-          <div class="hex">#2d2d2d — Headlines</div>
-        </div>
+      <div class="color-card dark-text" style="background: #f8f6f1;">
+        <div class="name">Cream</div>
+        <div class="hex">#f8f6f1</div>
       </div>
-      <div class="color-card">
-        <div class="color-swatch" style="background: #e8d5c4;"></div>
-        <div class="color-info">
-          <div class="name">Blush</div>
-          <div class="hex">#e8d5c4 — Soft Accent</div>
-        </div>
+      <div class="color-card" style="background: #1a1a1a;">
+        <div class="name">Charcoal</div>
+        <div class="hex">#1a1a1a</div>
       </div>
     </div>
 
-    <h3>Typography</h3>
-    <p>The current site loads 12+ font families (Adamina, Poppins, Josefin Slab, Cantarell, Abril Fatface, Playfair Display, Open Sans, Cinzel, Lato, etc.) — far too many, creating visual inconsistency and slow load times. We recommend consolidating to two complementary families:</p>
+    <h3 style="font-size: 1.2rem; margin-top: 48px; margin-bottom: 8px; font-weight: 400;">Typography</h3>
+    <p style="font-size: 0.88rem; color: var(--text-soft); margin-bottom: 8px; font-weight: 300;">The current site loads 12+ font families creating visual chaos and slow loads. We recommend two refined families that carry brand personality:</p>
 
-    <div class="font-sample">
-      <div class="label">Headings — Playfair Display</div>
-      <div class="demo-heading">When Your Patterns Shift, Everything Reorganizes</div>
-    </div>
-    <div class="font-sample">
-      <div class="label">Body — Poppins</div>
-      <div class="demo-body">Real change does not happen by trying harder. It happens when those patterns are addressed at their root. We work together to recalibrate the internal patterns shaping your decisions, relationships, and the way you design your life.</div>
-    </div>
-
-    <h3>Brand Tone</h3>
-    <div class="tone-cards">
-      <div class="tone-card">
-        <div class="icon">&#9670;</div>
-        <div class="title">Warm Authority</div>
-        <div class="desc">Expert without being clinical. Confident without being cold.</div>
+    <div class="font-showcase">
+      <div class="font-panel">
+        <div class="role">Display &mdash; Cormorant Garamond</div>
+        <div class="sample-display">When your patterns shift, everything reorganizes around it.</div>
       </div>
-      <div class="tone-card">
-        <div class="icon">&#9673;</div>
-        <div class="title">Grounded & Earthy</div>
-        <div class="desc">Nature-inspired palette and language. Rooted, not airy.</div>
-      </div>
-      <div class="tone-card">
-        <div class="icon">&#10022;</div>
-        <div class="title">Transformational</div>
-        <div class="desc">Speaks to real shifts, not surface-level self-help.</div>
-      </div>
-      <div class="tone-card">
-        <div class="icon">&#9829;</div>
-        <div class="title">Intimate & Direct</div>
-        <div class="desc">Speaks to the reader personally. "You" language. No jargon walls.</div>
+      <div class="font-panel">
+        <div class="role">Body &mdash; Outfit</div>
+        <div class="sample-body">Real change does not happen by trying harder. It happens when those patterns are addressed at their root. We work together to recalibrate the internal patterns shaping your decisions, relationships, and the way you design your life.</div>
       </div>
     </div>
 
-    <div class="comment-area">
-      <label>Comments on Brand Guide:</label>
-      <textarea id="comment-brand" rows="3" placeholder="Any corrections to the brand guide? Colors you prefer, fonts you'd like to change..."></textarea>
+    <h3 style="font-size: 1.2rem; margin-top: 48px; margin-bottom: 8px; font-weight: 400;">Brand Tone</h3>
+
+    <div class="tone-grid">
+      <div class="tone-cell">
+        <div class="tone-title">Warm Authority</div>
+        <div class="tone-desc">Expert without being clinical. Confident without being cold. Jayne's 25+ years of training earn the right to speak directly.</div>
+      </div>
+      <div class="tone-cell">
+        <div class="tone-title">Grounded & Earthy</div>
+        <div class="tone-desc">Nature-inspired palette and language. Rooted in the body, not floating in spiritual abstraction.</div>
+      </div>
+      <div class="tone-cell">
+        <div class="tone-title">Transformational</div>
+        <div class="tone-desc">Speaks to real, lasting shifts. Not surface-level affirmations &mdash; nervous system recalibration.</div>
+      </div>
+      <div class="tone-cell">
+        <div class="tone-title">Intimate & Direct</div>
+        <div class="tone-desc">"You" language. No jargon walls. Writes like she speaks to a client across the table.</div>
+      </div>
+    </div>
+
+    <div class="comment-area" style="padding-left: 0; margin-top: 40px;">
+      <label>Your Feedback on Brand Direction</label>
+      <textarea id="comment-brand" rows="3" placeholder="Any corrections? Colors you prefer, fonts you'd like different, tone adjustments..."></textarea>
     </div>
   </div>
 </section>
 
-<!-- Proposed Changes -->
+<!-- ============================================
+     PROPOSED CHANGES
+     ============================================ -->
 <section class="section" id="changes">
   <div class="container">
-    <div class="section-label">Recommendations</div>
-    <h2>Proposed Changes</h2>
-    <p>Based on our analysis of the current site, Jayne's positioning, market trends, and best practices for transformational coaching websites.</p>
+    <div class="section-eyebrow">Recommendations</div>
+    <h2>Proposed <em>Changes</em></h2>
+    <p class="lead">Eight strategic improvements based on our analysis of the current site, Jayne's positioning, market research, and best practices for art-directed wellness coaching websites.</p>
 
     <!-- Change 1 -->
     <div class="change-card">
-      <div class="change-number">1</div>
-      <h3>Redesign the Homepage Hero — Lead with the Pain Point</h3>
-      <span class="impact">HIGH IMPACT — Conversion</span>
-      <p class="description">The current hero repeats "Feeling Stuck?" 10 times in the source code (likely a rendering issue) and then jumps into explanation. The new hero should immediately validate the visitor's struggle, present Jayne as the guide, and give one clear CTA.</p>
-      <div class="before-after">
-        <div class="ba-col before">
-          <div class="ba-label">Current</div>
-          <ul>
-            <li>"Feeling Stuck?" repeated many times</li>
-            <li>Long paragraph before any CTA</li>
-            <li>No clear visual hierarchy</li>
-            <li>Generic stock hero image</li>
-          </ul>
+      <div class="change-header">
+        <div class="change-num">01</div>
+        <div class="change-title-group">
+          <h3>Art-Directed Homepage Hero</h3>
+          <span class="impact-tag">High Impact &mdash; Conversion</span>
         </div>
-        <div class="ba-col after">
-          <div class="ba-label">Proposed</div>
-          <ul>
-            <li>Single powerful headline + subhead</li>
-            <li>Professional photo of Jayne</li>
-            <li>"Schedule a Discovery Call" CTA above the fold</li>
-            <li>Social proof snippet (11 testimonials)</li>
-          </ul>
+      </div>
+      <div class="change-body">
+        <p class="description">The current hero repeats "Feeling Stuck?" multiple times (likely a rendering bug) and uses a generic stock image. The new hero should be a full-bleed, cinematic moment &mdash; Jayne's professional photo, a single powerful headline, and one clear CTA. Art-directed with intentional typography hierarchy and atmospheric color treatment, not a template hero section.</p>
+        <div class="comparison">
+          <div class="comp-col before">
+            <div class="comp-label">Current</div>
+            <ul>
+              <li>"Feeling Stuck?" repeated in source</li>
+              <li>Long paragraph before any CTA</li>
+              <li>No visual hierarchy</li>
+              <li>Generic stock hero image</li>
+            </ul>
+          </div>
+          <div class="comp-col after">
+            <div class="comp-label">Proposed</div>
+            <ul>
+              <li>Full-bleed hero with Jayne's photo</li>
+              <li>Single editorial headline + subhead</li>
+              <li>"Begin Your Recalibration" CTA above fold</li>
+              <li>Social proof snippet from 11 testimonials</li>
+            </ul>
+          </div>
         </div>
       </div>
       <div class="comment-area">
-        <label>Your feedback on this change:</label>
-        <textarea id="comment-change-1" rows="2" placeholder="Thoughts on the homepage hero redesign..."></textarea>
+        <label>Your Feedback</label>
+        <textarea id="comment-change-1" rows="2" placeholder="Thoughts on the homepage hero..."></textarea>
       </div>
     </div>
 
     <!-- Change 2 -->
     <div class="change-card">
-      <div class="change-number">2</div>
-      <h3>Consolidate Fonts (12+ down to 2)</h3>
-      <span class="impact">HIGH IMPACT — Performance + Visual Consistency</span>
-      <p class="description">The current site loads Adamina, Poppins, Josefin Slab, Cantarell, Abril Fatface, Playfair Display, Open Sans, Cinzel, Source Sans Pro, Yeseva One, Lato, and Droid Sans. This dramatically slows page load and creates visual chaos. We recommend Playfair Display for headings and Poppins for body text — both already in use, just not consistently.</p>
-      <div class="before-after">
-        <div class="ba-col before">
-          <div class="ba-label">Current</div>
-          <ul>
-            <li>12+ font families loading</li>
-            <li>Inconsistent type hierarchy</li>
-            <li>Slow page loads</li>
-          </ul>
+      <div class="change-header">
+        <div class="change-num">02</div>
+        <div class="change-title-group">
+          <h3>Distinctive Typography System</h3>
+          <span class="impact-tag">High Impact &mdash; Brand Identity</span>
         </div>
-        <div class="ba-col after">
-          <div class="ba-label">Proposed</div>
-          <ul>
-            <li>2 font families (Playfair + Poppins)</li>
-            <li>Clear heading/body hierarchy</li>
-            <li>Much faster page loads</li>
-          </ul>
+      </div>
+      <div class="change-body">
+        <p class="description">A custom or distinctive typeface is the single most impactful art-direction decision &mdash; it does more for brand identity than any other design choice. We'll consolidate the current 12+ fonts into a two-family system: a refined serif for headlines (Cormorant Garamond or a custom face) and a clean sans-serif for body (Outfit). This alone will transform how the site feels.</p>
+        <div class="comparison">
+          <div class="comp-col before">
+            <div class="comp-label">Current</div>
+            <ul>
+              <li>12+ font families loading simultaneously</li>
+              <li>Inconsistent type hierarchy page to page</li>
+              <li>Slow page loads from font bloat</li>
+              <li>No typographic identity</li>
+            </ul>
+          </div>
+          <div class="comp-col after">
+            <div class="comp-label">Proposed</div>
+            <ul>
+              <li>2 intentional font families</li>
+              <li>Clear display/body hierarchy</li>
+              <li>Dramatically faster page loads</li>
+              <li>Recognizable brand voice in every headline</li>
+            </ul>
+          </div>
         </div>
       </div>
       <div class="comment-area">
-        <label>Your feedback on this change:</label>
-        <textarea id="comment-change-2" rows="2" placeholder="Thoughts on font consolidation..."></textarea>
+        <label>Your Feedback</label>
+        <textarea id="comment-change-2" rows="2" placeholder="Thoughts on typography direction..."></textarea>
       </div>
     </div>
 
     <!-- Change 3 -->
     <div class="change-card">
-      <div class="change-number">3</div>
-      <h3>Create a Clear Client Journey / Services Architecture</h3>
-      <span class="impact">HIGH IMPACT — Clarity + Conversion</span>
-      <p class="description">The current site has "Soul Aligned Reset" and "Beyond Manifestation" as separate nav items, but it's not immediately clear how they relate, which is the entry point, or what the investment looks like. We propose a unified Services page that presents the clear journey: Discovery Call → Soul Aligned Reset (4 sessions) → Deeper Work.</p>
-      <div class="before-after">
-        <div class="ba-col before">
-          <div class="ba-label">Current</div>
-          <ul>
-            <li>Services split across multiple pages</li>
-            <li>No pricing transparency</li>
-            <li>Unclear entry point</li>
-            <li>"Beyond Manifestation" page 404s</li>
-          </ul>
+      <div class="change-header">
+        <div class="change-num">03</div>
+        <div class="change-title-group">
+          <h3>Unified Client Journey Architecture</h3>
+          <span class="impact-tag">High Impact &mdash; Clarity</span>
         </div>
-        <div class="ba-col after">
-          <div class="ba-label">Proposed</div>
-          <ul>
-            <li>Unified "Work With Me" page</li>
-            <li>Visual journey map / timeline</li>
-            <li>Clear pricing or "starting at" ranges</li>
-            <li>Single entry point: Discovery Call</li>
-          </ul>
+      </div>
+      <div class="change-body">
+        <p class="description">The current site splits services across "Soul Aligned Reset" and "Beyond Manifestation" (which 404s) with no clear entry point or investment range. We propose a single art-directed "Work With Me" page that presents the client journey as a narrative: Discovery Call &rarr; Soul Aligned Reset (4 sessions) &rarr; Deeper Transformation &mdash; with visual timeline and pricing transparency.</p>
+        <div class="comparison">
+          <div class="comp-col before">
+            <div class="comp-label">Current</div>
+            <ul>
+              <li>Services split across multiple pages</li>
+              <li>No pricing transparency</li>
+              <li>Unclear entry point for new clients</li>
+              <li>"Beyond Manifestation" page broken (404)</li>
+            </ul>
+          </div>
+          <div class="comp-col after">
+            <div class="comp-label">Proposed</div>
+            <ul>
+              <li>Single "Work With Me" narrative page</li>
+              <li>Visual journey map / timeline</li>
+              <li>Clear pricing or "starting at" ranges</li>
+              <li>One entry point: Discovery Call</li>
+            </ul>
+          </div>
         </div>
       </div>
       <div class="comment-area">
-        <label>Your feedback on this change:</label>
+        <label>Your Feedback</label>
         <textarea id="comment-change-3" rows="2" placeholder="Thoughts on services architecture..."></textarea>
       </div>
     </div>
 
     <!-- Change 4 -->
     <div class="change-card">
-      <div class="change-number">4</div>
-      <h3>Elevate the Testimonials with Visual Design</h3>
-      <span class="impact">MEDIUM IMPACT — Trust + Social Proof</span>
-      <p class="description">Jayne has 11 powerful, detailed testimonials — this is a major asset. Currently they're presented as a simple list. We propose redesigning them as a visual story with client photos (where available), pull quotes, and categorized results (physical health, relationships, career, emotional freedom).</p>
-      <div class="before-after">
-        <div class="ba-col before">
-          <div class="ba-label">Current</div>
-          <ul>
-            <li>Plain text list of testimonials</li>
-            <li>Long and overwhelming</li>
-            <li>No visual hierarchy</li>
-          </ul>
+      <div class="change-header">
+        <div class="change-num">04</div>
+        <div class="change-title-group">
+          <h3>Testimonials as Narrative Stories</h3>
+          <span class="impact-tag">Medium Impact &mdash; Trust</span>
         </div>
-        <div class="ba-col after">
-          <div class="ba-label">Proposed</div>
-          <ul>
-            <li>Card-based layout with pull quotes</li>
-            <li>Category filters (health, career, etc.)</li>
-            <li>Featured testimonial carousel on homepage</li>
-            <li>Results metrics highlighted</li>
-          </ul>
+      </div>
+      <div class="change-body">
+        <p class="description">11 powerful, detailed testimonials are Jayne's strongest asset &mdash; but they're buried in a plain text list. We'll redesign them as art-directed story cards with pull quotes, result highlights, and category tags. A featured testimonial carousel on the homepage, plus a dedicated stories page with alternating layouts (like the L.Y.D.I.A. Foundation's portfolio pages) that lets each client's transformation breathe.</p>
+        <div class="comparison">
+          <div class="comp-col before">
+            <div class="comp-label">Current</div>
+            <ul>
+              <li>Plain text wall of testimonials</li>
+              <li>Long and overwhelming to scroll</li>
+              <li>No visual hierarchy or categorization</li>
+            </ul>
+          </div>
+          <div class="comp-col after">
+            <div class="comp-label">Proposed</div>
+            <ul>
+              <li>Art-directed story cards with pull quotes</li>
+              <li>Category filters (health, career, relationships)</li>
+              <li>Alternating narrative layouts per story</li>
+              <li>Featured carousel on homepage</li>
+            </ul>
+          </div>
         </div>
       </div>
       <div class="comment-area">
-        <label>Your feedback on this change:</label>
+        <label>Your Feedback</label>
         <textarea id="comment-change-4" rows="2" placeholder="Thoughts on testimonial redesign..."></textarea>
       </div>
     </div>
 
     <!-- Change 5 -->
     <div class="change-card">
-      <div class="change-number">5</div>
-      <h3>Add a Lead Magnet / Email Capture Funnel</h3>
-      <span class="impact">HIGH IMPACT — Lead Generation</span>
-      <p class="description">The site currently mentions a free e-book "Balance Your Chakras, Balance Your Life!" but there's no prominent opt-in. We propose adding a dedicated lead magnet section with a compelling opt-in above the fold, automated email nurture sequence, and a resource library page to build the email list.</p>
-      <div class="before-after">
-        <div class="ba-col before">
-          <div class="ba-label">Current</div>
-          <ul>
-            <li>Contact form only captures warm leads</li>
-            <li>No nurture sequence</li>
-            <li>Free e-book buried or missing</li>
-          </ul>
+      <div class="change-header">
+        <div class="change-num">05</div>
+        <div class="change-title-group">
+          <h3>Lead Magnet &amp; Email Nurture Funnel</h3>
+          <span class="impact-tag">High Impact &mdash; Lead Gen</span>
         </div>
-        <div class="ba-col after">
-          <div class="ba-label">Proposed</div>
-          <ul>
-            <li>Prominent chakra guide opt-in</li>
-            <li>Pop-up or slide-in on exit intent</li>
-            <li>Email nurture sequence (5-7 emails)</li>
-            <li>Free resources page for SEO</li>
-          </ul>
+      </div>
+      <div class="change-body">
+        <p class="description">Jayne has a free e-book "Balance Your Chakras, Balance Your Life!" but there's no prominent opt-in anywhere on the site. We propose an art-directed lead capture section with atmospheric design, a compelling value proposition, and automated email nurture sequence (5-7 emails) that warms prospects toward booking a Discovery Call.</p>
+        <div class="comparison">
+          <div class="comp-col before">
+            <div class="comp-label">Current</div>
+            <ul>
+              <li>Contact form only captures warm leads</li>
+              <li>No nurture sequence</li>
+              <li>Free e-book buried or missing entirely</li>
+            </ul>
+          </div>
+          <div class="comp-col after">
+            <div class="comp-label">Proposed</div>
+            <ul>
+              <li>Prominent chakra guide opt-in on every page</li>
+              <li>Exit-intent or scroll-triggered capture</li>
+              <li>Automated email nurture to Discovery Call</li>
+              <li>Free resources page for organic SEO</li>
+            </ul>
+          </div>
         </div>
       </div>
       <div class="comment-area">
-        <label>Your feedback on this change:</label>
+        <label>Your Feedback</label>
         <textarea id="comment-change-5" rows="2" placeholder="Thoughts on lead magnet strategy..."></textarea>
       </div>
     </div>
 
     <!-- Change 6 -->
     <div class="change-card">
-      <div class="change-number">6</div>
-      <h3>Migrate Off GoDaddy Website Builder</h3>
-      <span class="impact">HIGH IMPACT — Performance + Flexibility</span>
-      <p class="description">GoDaddy Website Builder is limiting. The heavy JS rendering, poor SEO control, and template constraints prevent the site from performing at its potential. We recommend migrating to a custom-built static site deployed on Netlify — fast, modern, and fully customizable.</p>
-      <div class="before-after">
-        <div class="ba-col before">
-          <div class="ba-label">Current</div>
-          <ul>
-            <li>GoDaddy Website Builder</li>
-            <li>JS-rendered (poor SEO)</li>
-            <li>12+ font files loading</li>
-            <li>Template constraints</li>
-          </ul>
+      <div class="change-header">
+        <div class="change-num">06</div>
+        <div class="change-title-group">
+          <h3>Migrate Off GoDaddy to Custom Build</h3>
+          <span class="impact-tag">High Impact &mdash; Performance</span>
         </div>
-        <div class="ba-col after">
-          <div class="ba-label">Proposed</div>
-          <ul>
-            <li>Custom HTML/CSS on Netlify</li>
-            <li>Lightning-fast static site</li>
-            <li>Perfect SEO control</li>
-            <li>Full design freedom</li>
-          </ul>
+      </div>
+      <div class="change-body">
+        <p class="description">GoDaddy Website Builder is the ceiling on this site's potential. Heavy JS rendering kills SEO, template constraints prevent art direction, and the bloated font loading slows everything down. We'll build a custom static site on Netlify &mdash; lightning fast, fully art-directed, perfect SEO control, and zero template constraints.</p>
+        <div class="comparison">
+          <div class="comp-col before">
+            <div class="comp-label">Current</div>
+            <ul>
+              <li>GoDaddy Website Builder (template)</li>
+              <li>JS-rendered pages (poor SEO)</li>
+              <li>12+ unnecessary font files</li>
+              <li>Template layout constraints</li>
+            </ul>
+          </div>
+          <div class="comp-col after">
+            <div class="comp-label">Proposed</div>
+            <ul>
+              <li>Custom HTML/CSS on Netlify CDN</li>
+              <li>Sub-second page loads</li>
+              <li>Full SEO control (meta, schema, sitemap)</li>
+              <li>Complete design freedom per page</li>
+            </ul>
+          </div>
         </div>
       </div>
       <div class="comment-area">
-        <label>Your feedback on this change:</label>
+        <label>Your Feedback</label>
         <textarea id="comment-change-6" rows="2" placeholder="Thoughts on platform migration..."></textarea>
       </div>
     </div>
 
     <!-- Change 7 -->
     <div class="change-card">
-      <div class="change-number">7</div>
-      <h3>Rewrite the About Page as a Story</h3>
-      <span class="impact">MEDIUM IMPACT — Connection + Trust</span>
-      <p class="description">The current About page is good but reads more like a professional bio. For a transformational coach, the About page should be the most emotionally compelling page on the site — Jayne's personal story of transformation IS the proof that her method works. We propose restructuring it as a narrative arc: struggle → discovery → transformation → mission.</p>
-      <div class="before-after">
-        <div class="ba-col before">
-          <div class="ba-label">Current</div>
-          <ul>
-            <li>Professional but somewhat clinical</li>
-            <li>Methodology-focused</li>
-            <li>Missing personal photos</li>
-          </ul>
+      <div class="change-header">
+        <div class="change-num">07</div>
+        <div class="change-title-group">
+          <h3>About Page as Origin Story</h3>
+          <span class="impact-tag">Medium Impact &mdash; Connection</span>
         </div>
-        <div class="ba-col after">
-          <div class="ba-label">Proposed</div>
-          <ul>
-            <li>Narrative arc: struggle → mission</li>
-            <li>Professional headshot + lifestyle photos</li>
-            <li>Credentials woven into story</li>
-            <li>Ends with CTA to work together</li>
-          </ul>
+      </div>
+      <div class="change-body">
+        <p class="description">For a transformational coach, the About page IS the proof. Jayne's personal journey &mdash; from Wall Street to speech pathology to energy healing &mdash; is the most compelling content on the site. We'll restructure it as a full-bleed narrative arc: the struggle, the discovery, the transformation, the mission. Professional and lifestyle photography, not stock imagery. Each section art-directed as its own moment.</p>
+        <div class="comparison">
+          <div class="comp-col before">
+            <div class="comp-label">Current</div>
+            <ul>
+              <li>Professional but clinical tone</li>
+              <li>Methodology-focused, not story-focused</li>
+              <li>No professional photography</li>
+            </ul>
+          </div>
+          <div class="comp-col after">
+            <div class="comp-label">Proposed</div>
+            <ul>
+              <li>Narrative arc: struggle &rarr; discovery &rarr; mission</li>
+              <li>Full-bleed section photography</li>
+              <li>Credentials woven naturally into story</li>
+              <li>Ends with CTA to work together</li>
+            </ul>
+          </div>
         </div>
       </div>
       <div class="comment-area">
-        <label>Your feedback on this change:</label>
-        <textarea id="comment-change-7" rows="2" placeholder="Thoughts on About page restructure..."></textarea>
+        <label>Your Feedback</label>
+        <textarea id="comment-change-7" rows="2" placeholder="Thoughts on About page..."></textarea>
       </div>
     </div>
 
     <!-- Change 8 -->
     <div class="change-card">
-      <div class="change-number">8</div>
-      <h3>Add Calendly Integration + Simplified Contact</h3>
-      <span class="impact">MEDIUM IMPACT — Conversion</span>
-      <p class="description">The current contact page has a basic form and mentions WhatsApp. The Calendly link exists but isn't prominently featured. We propose making the Calendly booking the PRIMARY CTA across the entire site, embedded directly rather than linked externally.</p>
-      <div class="before-after">
-        <div class="ba-col before">
-          <div class="ba-label">Current</div>
-          <ul>
-            <li>Basic contact form</li>
-            <li>Calendly linked but not embedded</li>
-            <li>"We'll get back in 1 business day"</li>
-          </ul>
+      <div class="change-header">
+        <div class="change-num">08</div>
+        <div class="change-title-group">
+          <h3>Embedded Calendly as Primary CTA</h3>
+          <span class="impact-tag">Medium Impact &mdash; Conversion</span>
         </div>
-        <div class="ba-col after">
-          <div class="ba-label">Proposed</div>
-          <ul>
-            <li>Embedded Calendly on dedicated page</li>
-            <li>"Schedule a Session" in header nav</li>
-            <li>Floating CTA button on every page</li>
-            <li>WhatsApp kept as secondary option</li>
-          </ul>
+      </div>
+      <div class="change-body">
+        <p class="description">The existing Calendly link works but isn't prominent. We'll make booking the primary action across the entire site: embedded scheduling on a dedicated page, a persistent "Book a Discovery Call" in the header, and contextual CTAs after every section. WhatsApp remains as a secondary warm contact option.</p>
+        <div class="comparison">
+          <div class="comp-col before">
+            <div class="comp-label">Current</div>
+            <ul>
+              <li>Basic contact form as primary</li>
+              <li>Calendly linked but not embedded</li>
+              <li>"We'll get back in 1 business day"</li>
+            </ul>
+          </div>
+          <div class="comp-col after">
+            <div class="comp-label">Proposed</div>
+            <ul>
+              <li>Embedded Calendly on dedicated page</li>
+              <li>"Book a Call" in global header</li>
+              <li>Contextual CTAs after every section</li>
+              <li>WhatsApp as warm secondary option</li>
+            </ul>
+          </div>
         </div>
       </div>
       <div class="comment-area">
-        <label>Your feedback on this change:</label>
+        <label>Your Feedback</label>
         <textarea id="comment-change-8" rows="2" placeholder="Thoughts on Calendly integration..."></textarea>
       </div>
     </div>
@@ -731,91 +1108,120 @@ textarea:focus, input[type="text"]:focus {
   </div>
 </section>
 
-<!-- Assumptions -->
+<!-- ============================================
+     ASSUMPTIONS
+     ============================================ -->
 <section class="section" id="assumptions">
   <div class="container">
-    <div class="section-label">Please Verify</div>
-    <h2>Our Assumptions</h2>
-    <p>We've made the following assumptions about the business and goals. Please correct any that are wrong by editing the text fields below.</p>
+    <div class="section-eyebrow">Please Verify</div>
+    <h2>Our <em>Assumptions</em></h2>
+    <p class="lead">We've made the following assumptions about the business and goals. Edit any field below to correct us.</p>
 
-    <div class="assumption-card">
-      <div class="assumption-text">1. Jayne's primary goal is to book more 1-on-1 clients through the website (vs. selling courses or group programs).</div>
-      <input type="text" id="assumption-1" placeholder="Correct this assumption if needed...">
-    </div>
-
-    <div class="assumption-card">
-      <div class="assumption-text">2. The "Beyond Manifestation" page is a program that is either discontinued, renamed, or still in development (it currently returns a 404 error).</div>
-      <input type="text" id="assumption-2" placeholder="Correct this assumption if needed...">
-    </div>
-
-    <div class="assumption-card">
-      <div class="assumption-text">3. The target audience is primarily women aged 35-60 who are high achievers feeling stuck or misaligned — coaches, therapists, executives, and professionals.</div>
-      <input type="text" id="assumption-3" placeholder="Correct this assumption if needed...">
-    </div>
-
-    <div class="assumption-card">
-      <div class="assumption-text">4. The Soul Aligned Reset (4-session package) is the core offer and primary entry point for new clients.</div>
-      <input type="text" id="assumption-4" placeholder="Correct this assumption if needed...">
-    </div>
-
-    <div class="assumption-card">
-      <div class="assumption-text">5. Jayne wants to keep the sage green brand color and earthy aesthetic — this is intentional and aligned with her brand identity.</div>
-      <input type="text" id="assumption-5" placeholder="Correct this assumption if needed...">
-    </div>
-
-    <div class="assumption-card">
-      <div class="assumption-text">6. The existing Calendly link (90-min initial energy strategy and healing session) is the correct booking flow to keep.</div>
-      <input type="text" id="assumption-6" placeholder="Correct this assumption if needed...">
-    </div>
-
-    <div class="assumption-card">
-      <div class="assumption-text">7. Jayne is open to having professional photography on the site (headshots, lifestyle photos) vs. stock imagery only.</div>
-      <input type="text" id="assumption-7" placeholder="Correct this assumption if needed...">
-    </div>
-
-    <div class="assumption-card">
-      <div class="assumption-text">8. The free e-book "Balance Your Chakras, Balance Your Life!" exists and can be used as a lead magnet on the new site.</div>
-      <input type="text" id="assumption-8" placeholder="Correct this assumption if needed...">
-    </div>
-
-    <div class="assumption-card">
-      <div class="assumption-text">9. Jayne is comfortable migrating away from GoDaddy to a custom-built site (with us managing hosting/deployment).</div>
-      <input type="text" id="assumption-9" placeholder="Correct this assumption if needed...">
-    </div>
-
-    <div class="assumption-card">
-      <div class="assumption-text">10. WhatsApp (+1 917-763-8719) should remain a contact option on the new site.</div>
-      <input type="text" id="assumption-10" placeholder="Correct this assumption if needed...">
+    <div style="margin-top: 40px;">
+      <div class="assumption-item">
+        <div class="assumption-num">1</div>
+        <div>
+          <div class="assumption-text">Jayne's primary goal is to book more 1-on-1 clients through the website (vs. selling courses or group programs).</div>
+          <input type="text" id="assumption-1" placeholder="Correct if needed...">
+        </div>
+      </div>
+      <div class="assumption-item">
+        <div class="assumption-num">2</div>
+        <div>
+          <div class="assumption-text">The "Beyond Manifestation" page is either discontinued, renamed, or still in development (currently returns a 404).</div>
+          <input type="text" id="assumption-2" placeholder="Correct if needed...">
+        </div>
+      </div>
+      <div class="assumption-item">
+        <div class="assumption-num">3</div>
+        <div>
+          <div class="assumption-text">The target audience is primarily women aged 35-60 &mdash; high achievers feeling stuck or misaligned (coaches, therapists, executives, professionals).</div>
+          <input type="text" id="assumption-3" placeholder="Correct if needed...">
+        </div>
+      </div>
+      <div class="assumption-item">
+        <div class="assumption-num">4</div>
+        <div>
+          <div class="assumption-text">The Soul Aligned Reset (4-session package) is the core offer and primary entry point for new clients.</div>
+          <input type="text" id="assumption-4" placeholder="Correct if needed...">
+        </div>
+      </div>
+      <div class="assumption-item">
+        <div class="assumption-num">5</div>
+        <div>
+          <div class="assumption-text">The sage green brand color and earthy aesthetic are intentional and should be preserved (deepened, not replaced).</div>
+          <input type="text" id="assumption-5" placeholder="Correct if needed...">
+        </div>
+      </div>
+      <div class="assumption-item">
+        <div class="assumption-num">6</div>
+        <div>
+          <div class="assumption-text">The existing Calendly link (90-min initial energy strategy session) is the correct booking flow to keep.</div>
+          <input type="text" id="assumption-6" placeholder="Correct if needed...">
+        </div>
+      </div>
+      <div class="assumption-item">
+        <div class="assumption-num">7</div>
+        <div>
+          <div class="assumption-text">Jayne is open to professional photography on the site (headshots, lifestyle) vs. stock imagery only.</div>
+          <input type="text" id="assumption-7" placeholder="Correct if needed...">
+        </div>
+      </div>
+      <div class="assumption-item">
+        <div class="assumption-num">8</div>
+        <div>
+          <div class="assumption-text">The free e-book "Balance Your Chakras, Balance Your Life!" exists and can be used as a lead magnet.</div>
+          <input type="text" id="assumption-8" placeholder="Correct if needed...">
+        </div>
+      </div>
+      <div class="assumption-item">
+        <div class="assumption-num">9</div>
+        <div>
+          <div class="assumption-text">Jayne is comfortable migrating off GoDaddy to a custom-built site (with us managing hosting/deployment).</div>
+          <input type="text" id="assumption-9" placeholder="Correct if needed...">
+        </div>
+      </div>
+      <div class="assumption-item">
+        <div class="assumption-num">10</div>
+        <div>
+          <div class="assumption-text">WhatsApp (+1 917-763-8719) should remain a contact option on the new site.</div>
+          <input type="text" id="assumption-10" placeholder="Correct if needed...">
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- Additional Notes -->
+<!-- ============================================
+     ADDITIONAL NOTES
+     ============================================ -->
 <section class="section" id="notes">
   <div class="container">
-    <div class="section-label">Open Floor</div>
-    <h2>Additional Notes</h2>
-    <p>Anything else you'd like us to know? Goals we missed, features you want, pages to add or remove, content you'd like rewritten — tell us everything.</p>
-    <textarea id="additional-notes" rows="6" class="notes-section" placeholder="Type any additional thoughts, requests, or context here..."></textarea>
+    <div class="section-eyebrow">Open Floor</div>
+    <h2>Additional <em>Notes</em></h2>
+    <p class="lead">Anything else we should know? Goals we missed, features you want, content requests, pages to add or remove &mdash; tell us everything.</p>
+    <div class="notes-section" style="margin-top: 32px;">
+      <textarea id="additional-notes" rows="6" placeholder="Type anything here..."></textarea>
+    </div>
   </div>
 </section>
 
-<!-- Submit -->
-<section class="section submit-section" id="submit">
+<!-- ============================================
+     SUBMIT
+     ============================================ -->
+<section class="submit-section" id="submit">
   <div class="container">
-    <h2>Ready to Submit Your Feedback?</h2>
-    <p>Once you submit, we'll incorporate all your feedback and begin building the full redesigned website. No further input needed until the site is ready for review.</p>
+    <h2>Ready to <em>Begin?</em></h2>
+    <p>Once you submit, we'll incorporate your feedback and build the full redesigned site. No further input needed until it's ready for review.</p>
     <button class="btn-submit" onclick="submitFeedback()">Submit Feedback &amp; Start Build</button>
     <div class="success-msg" id="success-msg">
-      Feedback submitted! We're building your site now. You'll receive a Telegram message with the completed site URL when it's ready.
+      Feedback received. We're building your site now &mdash; you'll receive a link when it's ready for review.
     </div>
   </div>
 </section>
 
 <footer class="footer">
-  <div class="container">
-    Prepared for Living With Ease, LLC &mdash; Jayne Steinberg &bull; April 2026 &bull; ArkData
-  </div>
+  Living With Ease, LLC &bull; Jayne Steinberg &bull; April 2026 &bull; ArkData
 </footer>
 
 <script>
@@ -828,34 +1234,19 @@ function submitFeedback() {
     additional_notes: document.getElementById('additional-notes').value
   };
 
-  // Collect change comments
   for (let i = 1; i <= 8; i++) {
     const el = document.getElementById('comment-change-' + i);
-    if (el) {
-      feedback.proposed_changes.push({
-        id: i,
-        comment: el.value
-      });
-    }
+    if (el) feedback.proposed_changes.push({ id: i, comment: el.value });
   }
 
-  // Collect assumption edits
   for (let i = 1; i <= 10; i++) {
     const el = document.getElementById('assumption-' + i);
-    const textEl = el ? el.closest('.assumption-card').querySelector('.assumption-text') : null;
-    if (el) {
-      feedback.assumptions.push({
-        id: i,
-        original: textEl ? textEl.textContent.trim() : '',
-        edited: el.value
-      });
-    }
+    const textEl = el ? el.closest('.assumption-item').querySelector('.assumption-text') : null;
+    if (el) feedback.assumptions.push({ id: i, original: textEl ? textEl.textContent.trim() : '', edited: el.value });
   }
 
-  // Save feedback via Netlify Function or fallback to download
   const jsonStr = JSON.stringify(feedback, null, 2);
 
-  // Try posting to a serverless function
   fetch('/.netlify/functions/save-feedback', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -865,11 +1256,8 @@ function submitFeedback() {
     if (!res.ok) throw new Error('Function not available');
     return res.json();
   })
-  .then(() => {
-    showSuccess();
-  })
+  .then(() => showSuccess())
   .catch(() => {
-    // Fallback: download as JSON file
     const blob = new Blob([jsonStr], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
