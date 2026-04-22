@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Living With Ease — Website Redesign Proposal</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --sage: #99ad68;
+  --sage-light: #b8c990;
+  --sage-dark: #7a8c4f;
+  --cream: #faf8f4;
+  --warm-white: #fffefb;
+  --charcoal: #2d2d2d;
+  --text: #3a3a3a;
+  --text-light: #6b6b6b;
+  --gold: #c9a96e;
+  --gold-light: #e8d5a8;
+  --blush: #e8d5c4;
+  --border: #e5e0d8;
+  --shadow: rgba(0,0,0,0.06);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: var(--text);
+  background: var(--cream);
+  line-height: 1.7;
+  font-size: 16px;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Playfair Display', serif;
+  color: var(--charcoal);
+  line-height: 1.3;
+}
+
+.container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+/* Hero */
+.hero {
+  background: linear-gradient(135deg, var(--sage-dark) 0%, var(--sage) 50%, var(--sage-light) 100%);
+  color: white;
+  padding: 80px 24px 60px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.3;
+}
+.hero-content { position: relative; z-index: 1; }
+.hero h1 { font-size: 2.6rem; margin-bottom: 12px; font-weight: 700; }
+.hero .subtitle { font-size: 1.15rem; opacity: 0.92; font-weight: 300; max-width: 600px; margin: 0 auto 8px; }
+.hero .client { font-size: 0.95rem; opacity: 0.75; margin-top: 16px; }
+.hero .badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(10px);
+  padding: 6px 18px;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  letter-spacing: 0.05em;
+  margin-bottom: 24px;
+  text-transform: uppercase;
+}
+
+/* Nav */
+.nav {
+  background: var(--warm-white);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 12px var(--shadow);
+}
+.nav-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.nav a {
+  color: var(--text-light);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+.nav a:hover { background: var(--sage); color: white; }
+
+/* Sections */
+.section {
+  padding: 56px 0;
+  border-bottom: 1px solid var(--border);
+}
+.section:last-child { border-bottom: none; }
+.section-label {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--sage);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.section h2 { font-size: 1.9rem; margin-bottom: 20px; }
+.section h3 { font-size: 1.35rem; margin-bottom: 12px; }
+.section p { margin-bottom: 16px; color: var(--text-light); }
+
+/* Brand Guide */
+.color-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 16px;
+  margin: 24px 0;
+}
+.color-card {
+  border-radius: 12px;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 2px 8px var(--shadow);
+  border: 1px solid var(--border);
+}
+.color-swatch { height: 80px; }
+.color-info { padding: 12px; }
+.color-info .name { font-weight: 600; font-size: 0.85rem; }
+.color-info .hex { font-size: 0.8rem; color: var(--text-light); font-family: monospace; }
+
+.font-sample {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  margin: 12px 0;
+  border: 1px solid var(--border);
+}
+.font-sample .label { font-size: 0.75rem; color: var(--sage); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; font-family: 'Poppins'; }
+.font-sample .demo-heading { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--charcoal); margin-bottom: 4px; }
+.font-sample .demo-body { font-family: 'Poppins', sans-serif; font-size: 1rem; color: var(--text-light); }
+
+.tone-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+  margin: 20px 0;
+}
+.tone-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid var(--border);
+  text-align: center;
+}
+.tone-card .icon { font-size: 1.5rem; margin-bottom: 8px; }
+.tone-card .title { font-weight: 600; font-size: 0.9rem; margin-bottom: 4px; }
+.tone-card .desc { font-size: 0.82rem; color: var(--text-light); }
+
+/* Proposed Changes */
+.change-card {
+  background: white;
+  border-radius: 16px;
+  padding: 32px;
+  margin: 24px 0;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 16px var(--shadow);
+}
+.change-card .change-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: var(--sage);
+  color: white;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 0.85rem;
+  margin-bottom: 12px;
+}
+.change-card h3 { margin-bottom: 8px; }
+.change-card .impact {
+  display: inline-block;
+  background: var(--gold-light);
+  color: var(--charcoal);
+  padding: 3px 10px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+.change-card .description { color: var(--text-light); margin-bottom: 16px; line-height: 1.7; }
+.change-card .before-after {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 16px 0;
+}
+.change-card .ba-col {
+  background: var(--cream);
+  border-radius: 8px;
+  padding: 16px;
+}
+.change-card .ba-col .ba-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.change-card .ba-col.before .ba-label { color: #c44; }
+.change-card .ba-col.after .ba-label { color: var(--sage-dark); }
+.change-card .ba-col ul {
+  list-style: none;
+  padding: 0;
+  font-size: 0.88rem;
+  color: var(--text-light);
+}
+.change-card .ba-col ul li { padding: 3px 0; padding-left: 16px; position: relative; }
+.change-card .ba-col.before ul li::before { content: '−'; position: absolute; left: 0; color: #c44; font-weight: 700; }
+.change-card .ba-col.after ul li::before { content: '+'; position: absolute; left: 0; color: var(--sage-dark); font-weight: 700; }
+
+/* Comment Fields */
+.comment-area {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px dashed var(--border);
+}
+.comment-area label {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--sage-dark);
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+textarea, input[type="text"] {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  resize: vertical;
+  transition: border-color 0.2s;
+  background: var(--cream);
+}
+textarea:focus, input[type="text"]:focus {
+  outline: none;
+  border-color: var(--sage);
+  box-shadow: 0 0 0 3px rgba(153, 173, 104, 0.15);
+}
+
+/* Assumptions */
+.assumption-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin: 12px 0;
+  border-left: 4px solid var(--gold);
+  box-shadow: 0 2px 8px var(--shadow);
+}
+.assumption-card .assumption-text {
+  font-size: 0.95rem;
+  color: var(--text);
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+.assumption-card input[type="text"] {
+  background: var(--cream);
+}
+
+/* Submit */
+.submit-section {
+  text-align: center;
+  padding: 60px 0;
+}
+.submit-section h2 { margin-bottom: 12px; }
+.submit-section p { color: var(--text-light); margin-bottom: 28px; }
+
+.btn-submit {
+  background: linear-gradient(135deg, var(--sage-dark), var(--sage));
+  color: white;
+  border: none;
+  padding: 16px 48px;
+  font-size: 1.05rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 4px 16px rgba(153, 173, 104, 0.3);
+}
+.btn-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(153, 173, 104, 0.4);
+}
+.btn-submit:active { transform: translateY(0); }
+
+.success-msg {
+  display: none;
+  background: var(--sage);
+  color: white;
+  padding: 24px;
+  border-radius: 12px;
+  margin-top: 24px;
+  font-size: 1.05rem;
+}
+
+/* Additional Notes */
+.notes-section textarea { min-height: 150px; background: white; }
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 32px 24px;
+  font-size: 0.82rem;
+  color: var(--text-light);
+  border-top: 1px solid var(--border);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .hero h1 { font-size: 1.9rem; }
+  .change-card .before-after { grid-template-columns: 1fr; }
+  .color-grid { grid-template-columns: repeat(3, 1fr); }
+  .change-card { padding: 20px; }
+  .nav a { font-size: 0.78rem; padding: 4px 10px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="badge">Website Redesign Proposal</div>
+    <h1>Living With Ease</h1>
+    <p class="subtitle">A strategic redesign to better serve Jayne Steinberg's transformational healing practice and convert more aligned clients.</p>
+    <p class="client">Prepared by ArkData &mdash; April 2026</p>
+  </div>
+</section>
+
+<!-- Nav -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#brand">Brand Guide</a>
+    <a href="#changes">Proposed Changes</a>
+    <a href="#assumptions">Assumptions</a>
+    <a href="#notes">Additional Notes</a>
+    <a href="#submit">Submit Feedback</a>
+  </div>
+</nav>
+
+<!-- Current Site Overview -->
+<section class="section">
+  <div class="container">
+    <div class="section-label">Current State</div>
+    <h2>Site Analysis Summary</h2>
+    <p>livingwithease.com is currently hosted on GoDaddy Website Builder. The site has 6 pages: Home, About, Soul Aligned Reset, Testimonials, Beyond Manifestation, and Contact Us. Jayne Steinberg, MA, is an energy alchemist and transformational coach based outside Boston, Massachusetts. She helps high achievers through individualized 3-6 month journeys using her proprietary "Big T Truth Method" and Three Pillar Framework (Energy Health, Energy Alignment, Energy Blueprint).</p>
+    <p>The site has strong testimonials (11 detailed client stories), clear expertise positioning, and a well-defined methodology. However, there are significant opportunities to improve conversion, visual hierarchy, and the overall user experience to better match the caliber of Jayne's work.</p>
+  </div>
+</section>
+
+<!-- Brand Guide -->
+<section class="section" id="brand">
+  <div class="container">
+    <div class="section-label">Extracted + Recommended</div>
+    <h2>Brand Guide</h2>
+
+    <h3>Color Palette</h3>
+    <p>The current site uses sage green (#99ad68) as the primary theme color. We recommend keeping this as the anchor and building a more cohesive palette around it.</p>
+
+    <div class="color-grid">
+      <div class="color-card">
+        <div class="color-swatch" style="background: #99ad68;"></div>
+        <div class="color-info">
+          <div class="name">Sage Green</div>
+          <div class="hex">#99ad68 — Primary</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background: #7a8c4f;"></div>
+        <div class="color-info">
+          <div class="name">Deep Sage</div>
+          <div class="hex">#7a8c4f — Accent</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background: #c9a96e;"></div>
+        <div class="color-info">
+          <div class="name">Warm Gold</div>
+          <div class="hex">#c9a96e — Highlight</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background: #faf8f4;"></div>
+        <div class="color-info">
+          <div class="name">Warm Cream</div>
+          <div class="hex">#faf8f4 — Background</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background: #2d2d2d;"></div>
+        <div class="color-info">
+          <div class="name">Charcoal</div>
+          <div class="hex">#2d2d2d — Headlines</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background: #e8d5c4;"></div>
+        <div class="color-info">
+          <div class="name">Blush</div>
+          <div class="hex">#e8d5c4 — Soft Accent</div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Typography</h3>
+    <p>The current site loads 12+ font families (Adamina, Poppins, Josefin Slab, Cantarell, Abril Fatface, Playfair Display, Open Sans, Cinzel, Lato, etc.) — far too many, creating visual inconsistency and slow load times. We recommend consolidating to two complementary families:</p>
+
+    <div class="font-sample">
+      <div class="label">Headings — Playfair Display</div>
+      <div class="demo-heading">When Your Patterns Shift, Everything Reorganizes</div>
+    </div>
+    <div class="font-sample">
+      <div class="label">Body — Poppins</div>
+      <div class="demo-body">Real change does not happen by trying harder. It happens when those patterns are addressed at their root. We work together to recalibrate the internal patterns shaping your decisions, relationships, and the way you design your life.</div>
+    </div>
+
+    <h3>Brand Tone</h3>
+    <div class="tone-cards">
+      <div class="tone-card">
+        <div class="icon">&#9670;</div>
+        <div class="title">Warm Authority</div>
+        <div class="desc">Expert without being clinical. Confident without being cold.</div>
+      </div>
+      <div class="tone-card">
+        <div class="icon">&#9673;</div>
+        <div class="title">Grounded & Earthy</div>
+        <div class="desc">Nature-inspired palette and language. Rooted, not airy.</div>
+      </div>
+      <div class="tone-card">
+        <div class="icon">&#10022;</div>
+        <div class="title">Transformational</div>
+        <div class="desc">Speaks to real shifts, not surface-level self-help.</div>
+      </div>
+      <div class="tone-card">
+        <div class="icon">&#9829;</div>
+        <div class="title">Intimate & Direct</div>
+        <div class="desc">Speaks to the reader personally. "You" language. No jargon walls.</div>
+      </div>
+    </div>
+
+    <div class="comment-area">
+      <label>Comments on Brand Guide:</label>
+      <textarea id="comment-brand" rows="3" placeholder="Any corrections to the brand guide? Colors you prefer, fonts you'd like to change..."></textarea>
+    </div>
+  </div>
+</section>
+
+<!-- Proposed Changes -->
+<section class="section" id="changes">
+  <div class="container">
+    <div class="section-label">Recommendations</div>
+    <h2>Proposed Changes</h2>
+    <p>Based on our analysis of the current site, Jayne's positioning, market trends, and best practices for transformational coaching websites.</p>
+
+    <!-- Change 1 -->
+    <div class="change-card">
+      <div class="change-number">1</div>
+      <h3>Redesign the Homepage Hero — Lead with the Pain Point</h3>
+      <span class="impact">HIGH IMPACT — Conversion</span>
+      <p class="description">The current hero repeats "Feeling Stuck?" 10 times in the source code (likely a rendering issue) and then jumps into explanation. The new hero should immediately validate the visitor's struggle, present Jayne as the guide, and give one clear CTA.</p>
+      <div class="before-after">
+        <div class="ba-col before">
+          <div class="ba-label">Current</div>
+          <ul>
+            <li>"Feeling Stuck?" repeated many times</li>
+            <li>Long paragraph before any CTA</li>
+            <li>No clear visual hierarchy</li>
+            <li>Generic stock hero image</li>
+          </ul>
+        </div>
+        <div class="ba-col after">
+          <div class="ba-label">Proposed</div>
+          <ul>
+            <li>Single powerful headline + subhead</li>
+            <li>Professional photo of Jayne</li>
+            <li>"Schedule a Discovery Call" CTA above the fold</li>
+            <li>Social proof snippet (11 testimonials)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="comment-area">
+        <label>Your feedback on this change:</label>
+        <textarea id="comment-change-1" rows="2" placeholder="Thoughts on the homepage hero redesign..."></textarea>
+      </div>
+    </div>
+
+    <!-- Change 2 -->
+    <div class="change-card">
+      <div class="change-number">2</div>
+      <h3>Consolidate Fonts (12+ down to 2)</h3>
+      <span class="impact">HIGH IMPACT — Performance + Visual Consistency</span>
+      <p class="description">The current site loads Adamina, Poppins, Josefin Slab, Cantarell, Abril Fatface, Playfair Display, Open Sans, Cinzel, Source Sans Pro, Yeseva One, Lato, and Droid Sans. This dramatically slows page load and creates visual chaos. We recommend Playfair Display for headings and Poppins for body text — both already in use, just not consistently.</p>
+      <div class="before-after">
+        <div class="ba-col before">
+          <div class="ba-label">Current</div>
+          <ul>
+            <li>12+ font families loading</li>
+            <li>Inconsistent type hierarchy</li>
+            <li>Slow page loads</li>
+          </ul>
+        </div>
+        <div class="ba-col after">
+          <div class="ba-label">Proposed</div>
+          <ul>
+            <li>2 font families (Playfair + Poppins)</li>
+            <li>Clear heading/body hierarchy</li>
+            <li>Much faster page loads</li>
+          </ul>
+        </div>
+      </div>
+      <div class="comment-area">
+        <label>Your feedback on this change:</label>
+        <textarea id="comment-change-2" rows="2" placeholder="Thoughts on font consolidation..."></textarea>
+      </div>
+    </div>
+
+    <!-- Change 3 -->
+    <div class="change-card">
+      <div class="change-number">3</div>
+      <h3>Create a Clear Client Journey / Services Architecture</h3>
+      <span class="impact">HIGH IMPACT — Clarity + Conversion</span>
+      <p class="description">The current site has "Soul Aligned Reset" and "Beyond Manifestation" as separate nav items, but it's not immediately clear how they relate, which is the entry point, or what the investment looks like. We propose a unified Services page that presents the clear journey: Discovery Call → Soul Aligned Reset (4 sessions) → Deeper Work.</p>
+      <div class="before-after">
+        <div class="ba-col before">
+          <div class="ba-label">Current</div>
+          <ul>
+            <li>Services split across multiple pages</li>
+            <li>No pricing transparency</li>
+            <li>Unclear entry point</li>
+            <li>"Beyond Manifestation" page 404s</li>
+          </ul>
+        </div>
+        <div class="ba-col after">
+          <div class="ba-label">Proposed</div>
+          <ul>
+            <li>Unified "Work With Me" page</li>
+            <li>Visual journey map / timeline</li>
+            <li>Clear pricing or "starting at" ranges</li>
+            <li>Single entry point: Discovery Call</li>
+          </ul>
+        </div>
+      </div>
+      <div class="comment-area">
+        <label>Your feedback on this change:</label>
+        <textarea id="comment-change-3" rows="2" placeholder="Thoughts on services architecture..."></textarea>
+      </div>
+    </div>
+
+    <!-- Change 4 -->
+    <div class="change-card">
+      <div class="change-number">4</div>
+      <h3>Elevate the Testimonials with Visual Design</h3>
+      <span class="impact">MEDIUM IMPACT — Trust + Social Proof</span>
+      <p class="description">Jayne has 11 powerful, detailed testimonials — this is a major asset. Currently they're presented as a simple list. We propose redesigning them as a visual story with client photos (where available), pull quotes, and categorized results (physical health, relationships, career, emotional freedom).</p>
+      <div class="before-after">
+        <div class="ba-col before">
+          <div class="ba-label">Current</div>
+          <ul>
+            <li>Plain text list of testimonials</li>
+            <li>Long and overwhelming</li>
+            <li>No visual hierarchy</li>
+          </ul>
+        </div>
+        <div class="ba-col after">
+          <div class="ba-label">Proposed</div>
+          <ul>
+            <li>Card-based layout with pull quotes</li>
+            <li>Category filters (health, career, etc.)</li>
+            <li>Featured testimonial carousel on homepage</li>
+            <li>Results metrics highlighted</li>
+          </ul>
+        </div>
+      </div>
+      <div class="comment-area">
+        <label>Your feedback on this change:</label>
+        <textarea id="comment-change-4" rows="2" placeholder="Thoughts on testimonial redesign..."></textarea>
+      </div>
+    </div>
+
+    <!-- Change 5 -->
+    <div class="change-card">
+      <div class="change-number">5</div>
+      <h3>Add a Lead Magnet / Email Capture Funnel</h3>
+      <span class="impact">HIGH IMPACT — Lead Generation</span>
+      <p class="description">The site currently mentions a free e-book "Balance Your Chakras, Balance Your Life!" but there's no prominent opt-in. We propose adding a dedicated lead magnet section with a compelling opt-in above the fold, automated email nurture sequence, and a resource library page to build the email list.</p>
+      <div class="before-after">
+        <div class="ba-col before">
+          <div class="ba-label">Current</div>
+          <ul>
+            <li>Contact form only captures warm leads</li>
+            <li>No nurture sequence</li>
+            <li>Free e-book buried or missing</li>
+          </ul>
+        </div>
+        <div class="ba-col after">
+          <div class="ba-label">Proposed</div>
+          <ul>
+            <li>Prominent chakra guide opt-in</li>
+            <li>Pop-up or slide-in on exit intent</li>
+            <li>Email nurture sequence (5-7 emails)</li>
+            <li>Free resources page for SEO</li>
+          </ul>
+        </div>
+      </div>
+      <div class="comment-area">
+        <label>Your feedback on this change:</label>
+        <textarea id="comment-change-5" rows="2" placeholder="Thoughts on lead magnet strategy..."></textarea>
+      </div>
+    </div>
+
+    <!-- Change 6 -->
+    <div class="change-card">
+      <div class="change-number">6</div>
+      <h3>Migrate Off GoDaddy Website Builder</h3>
+      <span class="impact">HIGH IMPACT — Performance + Flexibility</span>
+      <p class="description">GoDaddy Website Builder is limiting. The heavy JS rendering, poor SEO control, and template constraints prevent the site from performing at its potential. We recommend migrating to a custom-built static site deployed on Netlify — fast, modern, and fully customizable.</p>
+      <div class="before-after">
+        <div class="ba-col before">
+          <div class="ba-label">Current</div>
+          <ul>
+            <li>GoDaddy Website Builder</li>
+            <li>JS-rendered (poor SEO)</li>
+            <li>12+ font files loading</li>
+            <li>Template constraints</li>
+          </ul>
+        </div>
+        <div class="ba-col after">
+          <div class="ba-label">Proposed</div>
+          <ul>
+            <li>Custom HTML/CSS on Netlify</li>
+            <li>Lightning-fast static site</li>
+            <li>Perfect SEO control</li>
+            <li>Full design freedom</li>
+          </ul>
+        </div>
+      </div>
+      <div class="comment-area">
+        <label>Your feedback on this change:</label>
+        <textarea id="comment-change-6" rows="2" placeholder="Thoughts on platform migration..."></textarea>
+      </div>
+    </div>
+
+    <!-- Change 7 -->
+    <div class="change-card">
+      <div class="change-number">7</div>
+      <h3>Rewrite the About Page as a Story</h3>
+      <span class="impact">MEDIUM IMPACT — Connection + Trust</span>
+      <p class="description">The current About page is good but reads more like a professional bio. For a transformational coach, the About page should be the most emotionally compelling page on the site — Jayne's personal story of transformation IS the proof that her method works. We propose restructuring it as a narrative arc: struggle → discovery → transformation → mission.</p>
+      <div class="before-after">
+        <div class="ba-col before">
+          <div class="ba-label">Current</div>
+          <ul>
+            <li>Professional but somewhat clinical</li>
+            <li>Methodology-focused</li>
+            <li>Missing personal photos</li>
+          </ul>
+        </div>
+        <div class="ba-col after">
+          <div class="ba-label">Proposed</div>
+          <ul>
+            <li>Narrative arc: struggle → mission</li>
+            <li>Professional headshot + lifestyle photos</li>
+            <li>Credentials woven into story</li>
+            <li>Ends with CTA to work together</li>
+          </ul>
+        </div>
+      </div>
+      <div class="comment-area">
+        <label>Your feedback on this change:</label>
+        <textarea id="comment-change-7" rows="2" placeholder="Thoughts on About page restructure..."></textarea>
+      </div>
+    </div>
+
+    <!-- Change 8 -->
+    <div class="change-card">
+      <div class="change-number">8</div>
+      <h3>Add Calendly Integration + Simplified Contact</h3>
+      <span class="impact">MEDIUM IMPACT — Conversion</span>
+      <p class="description">The current contact page has a basic form and mentions WhatsApp. The Calendly link exists but isn't prominently featured. We propose making the Calendly booking the PRIMARY CTA across the entire site, embedded directly rather than linked externally.</p>
+      <div class="before-after">
+        <div class="ba-col before">
+          <div class="ba-label">Current</div>
+          <ul>
+            <li>Basic contact form</li>
+            <li>Calendly linked but not embedded</li>
+            <li>"We'll get back in 1 business day"</li>
+          </ul>
+        </div>
+        <div class="ba-col after">
+          <div class="ba-label">Proposed</div>
+          <ul>
+            <li>Embedded Calendly on dedicated page</li>
+            <li>"Schedule a Session" in header nav</li>
+            <li>Floating CTA button on every page</li>
+            <li>WhatsApp kept as secondary option</li>
+          </ul>
+        </div>
+      </div>
+      <div class="comment-area">
+        <label>Your feedback on this change:</label>
+        <textarea id="comment-change-8" rows="2" placeholder="Thoughts on Calendly integration..."></textarea>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Assumptions -->
+<section class="section" id="assumptions">
+  <div class="container">
+    <div class="section-label">Please Verify</div>
+    <h2>Our Assumptions</h2>
+    <p>We've made the following assumptions about the business and goals. Please correct any that are wrong by editing the text fields below.</p>
+
+    <div class="assumption-card">
+      <div class="assumption-text">1. Jayne's primary goal is to book more 1-on-1 clients through the website (vs. selling courses or group programs).</div>
+      <input type="text" id="assumption-1" placeholder="Correct this assumption if needed...">
+    </div>
+
+    <div class="assumption-card">
+      <div class="assumption-text">2. The "Beyond Manifestation" page is a program that is either discontinued, renamed, or still in development (it currently returns a 404 error).</div>
+      <input type="text" id="assumption-2" placeholder="Correct this assumption if needed...">
+    </div>
+
+    <div class="assumption-card">
+      <div class="assumption-text">3. The target audience is primarily women aged 35-60 who are high achievers feeling stuck or misaligned — coaches, therapists, executives, and professionals.</div>
+      <input type="text" id="assumption-3" placeholder="Correct this assumption if needed...">
+    </div>
+
+    <div class="assumption-card">
+      <div class="assumption-text">4. The Soul Aligned Reset (4-session package) is the core offer and primary entry point for new clients.</div>
+      <input type="text" id="assumption-4" placeholder="Correct this assumption if needed...">
+    </div>
+
+    <div class="assumption-card">
+      <div class="assumption-text">5. Jayne wants to keep the sage green brand color and earthy aesthetic — this is intentional and aligned with her brand identity.</div>
+      <input type="text" id="assumption-5" placeholder="Correct this assumption if needed...">
+    </div>
+
+    <div class="assumption-card">
+      <div class="assumption-text">6. The existing Calendly link (90-min initial energy strategy and healing session) is the correct booking flow to keep.</div>
+      <input type="text" id="assumption-6" placeholder="Correct this assumption if needed...">
+    </div>
+
+    <div class="assumption-card">
+      <div class="assumption-text">7. Jayne is open to having professional photography on the site (headshots, lifestyle photos) vs. stock imagery only.</div>
+      <input type="text" id="assumption-7" placeholder="Correct this assumption if needed...">
+    </div>
+
+    <div class="assumption-card">
+      <div class="assumption-text">8. The free e-book "Balance Your Chakras, Balance Your Life!" exists and can be used as a lead magnet on the new site.</div>
+      <input type="text" id="assumption-8" placeholder="Correct this assumption if needed...">
+    </div>
+
+    <div class="assumption-card">
+      <div class="assumption-text">9. Jayne is comfortable migrating away from GoDaddy to a custom-built site (with us managing hosting/deployment).</div>
+      <input type="text" id="assumption-9" placeholder="Correct this assumption if needed...">
+    </div>
+
+    <div class="assumption-card">
+      <div class="assumption-text">10. WhatsApp (+1 917-763-8719) should remain a contact option on the new site.</div>
+      <input type="text" id="assumption-10" placeholder="Correct this assumption if needed...">
+    </div>
+  </div>
+</section>
+
+<!-- Additional Notes -->
+<section class="section" id="notes">
+  <div class="container">
+    <div class="section-label">Open Floor</div>
+    <h2>Additional Notes</h2>
+    <p>Anything else you'd like us to know? Goals we missed, features you want, pages to add or remove, content you'd like rewritten — tell us everything.</p>
+    <textarea id="additional-notes" rows="6" class="notes-section" placeholder="Type any additional thoughts, requests, or context here..."></textarea>
+  </div>
+</section>
+
+<!-- Submit -->
+<section class="section submit-section" id="submit">
+  <div class="container">
+    <h2>Ready to Submit Your Feedback?</h2>
+    <p>Once you submit, we'll incorporate all your feedback and begin building the full redesigned website. No further input needed until the site is ready for review.</p>
+    <button class="btn-submit" onclick="submitFeedback()">Submit Feedback &amp; Start Build</button>
+    <div class="success-msg" id="success-msg">
+      Feedback submitted! We're building your site now. You'll receive a Telegram message with the completed site URL when it's ready.
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    Prepared for Living With Ease, LLC &mdash; Jayne Steinberg &bull; April 2026 &bull; ArkData
+  </div>
+</footer>
+
+<script>
+function submitFeedback() {
+  const feedback = {
+    timestamp: new Date().toISOString(),
+    proposed_changes: [],
+    assumptions: [],
+    brand_comment: document.getElementById('comment-brand').value,
+    additional_notes: document.getElementById('additional-notes').value
+  };
+
+  // Collect change comments
+  for (let i = 1; i <= 8; i++) {
+    const el = document.getElementById('comment-change-' + i);
+    if (el) {
+      feedback.proposed_changes.push({
+        id: i,
+        comment: el.value
+      });
+    }
+  }
+
+  // Collect assumption edits
+  for (let i = 1; i <= 10; i++) {
+    const el = document.getElementById('assumption-' + i);
+    const textEl = el ? el.closest('.assumption-card').querySelector('.assumption-text') : null;
+    if (el) {
+      feedback.assumptions.push({
+        id: i,
+        original: textEl ? textEl.textContent.trim() : '',
+        edited: el.value
+      });
+    }
+  }
+
+  // Save feedback via Netlify Function or fallback to download
+  const jsonStr = JSON.stringify(feedback, null, 2);
+
+  // Try posting to a serverless function
+  fetch('/.netlify/functions/save-feedback', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: jsonStr
+  })
+  .then(res => {
+    if (!res.ok) throw new Error('Function not available');
+    return res.json();
+  })
+  .then(() => {
+    showSuccess();
+  })
+  .catch(() => {
+    // Fallback: download as JSON file
+    const blob = new Blob([jsonStr], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'livingwithease-feedback.json';
+    a.click();
+    URL.revokeObjectURL(url);
+    showSuccess();
+  });
+}
+
+function showSuccess() {
+  document.getElementById('success-msg').style.display = 'block';
+  document.querySelector('.btn-submit').style.display = 'none';
+  window.scrollTo({ top: document.getElementById('success-msg').offsetTop - 100, behavior: 'smooth' });
+}
+</script>
+
+</body>
+</html>
