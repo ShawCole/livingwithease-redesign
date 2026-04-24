@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Living With Ease — Website Redesign Proposal (Round 1)</title>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;1,6..96,400;1,6..96,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -83,15 +83,15 @@ h1, h2, h3, h4 {
   margin-bottom: 32px;
 }
 .hero h1 {
-  font-family: 'Bodoni Moda', 'Cormorant Garamond', serif;
-  font-size: clamp(3rem, 6.8vw, 5rem);
-  color: var(--cream);
-  font-weight: 400;
-  margin-bottom: 24px;
-  letter-spacing: -0.015em;
-  line-height: 1.02;
+  margin: 0 auto 32px;
+  max-width: min(720px, 85vw);
+  line-height: 0;
 }
-.hero h1 em { font-style: italic; color: var(--cream); font-weight: 400; }
+.hero h1 img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
 .hero .subtitle {
   font-size: 1.05rem;
   color: rgba(248,246,241,0.65);
@@ -370,12 +370,46 @@ h1, h2, h3, h4 {
   font-weight: 500;
 }
 .font-panel .sample-script {
-  font-family: 'Bodoni Moda', 'Cormorant Garamond', serif;
-  font-size: clamp(2rem, 4vw, 3.2rem);
-  color: var(--charcoal);
-  line-height: 1.05;
-  font-weight: 400;
-  letter-spacing: -0.01em;
+  margin: 8px 0;
+}
+.font-panel .sample-script img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.font-panel.specimen-panel .specimen-weights {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  margin: 8px 0 20px;
+}
+.font-panel.specimen-panel .weight-row {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+.font-panel.specimen-panel .weight-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+.font-panel.specimen-panel .weight-label {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 500;
+  flex-shrink: 0;
+  min-width: 88px;
+  align-self: center;
+}
+.font-panel.specimen-panel .weight-row img {
+  flex: 1;
+  height: auto;
+  max-width: calc(100% - 106px);
+  display: block;
 }
 .font-panel .sample-display {
   font-family: 'Cormorant Garamond', serif;
@@ -812,7 +846,9 @@ textarea::placeholder, input::placeholder { color: var(--text-muted); font-weigh
   <div class="hero-content">
     <div class="round-badge">Round 1 of 2</div>
     <div class="hero-eyebrow">Website Redesign Proposal</div>
-    <h1>Living With <em>Ease</em></h1>
+    <h1>
+      <img src="assets/fonts/hero-wordmark-cream.png" alt="living with ease" />
+    </h1>
     <p class="subtitle">An editorial, art-directed redesign for Jayne Steinberg &mdash; positioning her transformational work with the visual polish of a luxury lifestyle brand. This is Round 1; your feedback shapes what comes next.</p>
     <p class="meta">Prepared by Jamie Crowley &amp; ArkData &bull; April 2026</p>
     <div class="divider-line"></div>
@@ -987,13 +1023,42 @@ textarea::placeholder, input::placeholder { color: var(--text-muted); font-weigh
 
     <!-- Font Pairing -->
     <h3 class="sub-heading">Font Pairing</h3>
-    <p class="sub-desc">Jamie's process: one high-contrast editorial display for the wordmark and headline moments + one clean sans-serif for body readability. The final wordmark font &mdash; <em>Editor's Note Display</em> from Creative Market &mdash; will be licensed and screenshotted in Jayne's actual brand words for approval. The sample below approximates its spirit using Bodoni Moda.</p>
+    <p class="sub-desc">Jamie's process: one high-contrast editorial display for the wordmark and headline moments + one clean sans-serif for body readability. The wordmark font is <em>Editor's Note Display</em> by Jen Wagner Co &mdash; licensed via Creative Market. Specimens below rendered in the actual typeface.</p>
 
     <div class="font-pairing">
-      <div class="font-panel">
+      <div class="font-panel specimen-panel">
         <div class="role">Display / Wordmark &mdash; Editor's Note Display</div>
-        <div class="sample-script">living with ease</div>
-        <div class="font-note">High-contrast editorial serif with hairline terminals and luxe proportions. Think magazine masthead, not yoga studio. Available in 8 weights (Hairline &rarr; Medium, with Italic variants) for a refined visual system. Creative Market license via Jamie.</div>
+        <div class="specimen-weights">
+          <div class="weight-row">
+            <div class="weight-label">Hairline</div>
+            <img src="assets/fonts/wordmark-hairline.png" alt="living with ease, Editor's Note Display Hairline" />
+          </div>
+          <div class="weight-row">
+            <div class="weight-label">Thin</div>
+            <img src="assets/fonts/wordmark-thin.png" alt="living with ease, Editor's Note Display Thin" />
+          </div>
+          <div class="weight-row">
+            <div class="weight-label">Light</div>
+            <img src="assets/fonts/wordmark-light.png" alt="living with ease, Editor's Note Display Light" />
+          </div>
+          <div class="weight-row">
+            <div class="weight-label">Light Italic</div>
+            <img src="assets/fonts/wordmark-light-italic.png" alt="living with ease, Editor's Note Display Light Italic" />
+          </div>
+          <div class="weight-row">
+            <div class="weight-label">Regular</div>
+            <img src="assets/fonts/wordmark-regular.png" alt="living with ease, Editor's Note Display Regular" />
+          </div>
+          <div class="weight-row">
+            <div class="weight-label">Italic</div>
+            <img src="assets/fonts/wordmark-italic.png" alt="living with ease, Editor's Note Display Italic" />
+          </div>
+          <div class="weight-row">
+            <div class="weight-label">Medium</div>
+            <img src="assets/fonts/wordmark-medium.png" alt="living with ease, Editor's Note Display Medium" />
+          </div>
+        </div>
+        <div class="font-note">High-contrast editorial serif by Jen Wagner Co. Hairline terminals, tight curves, luxe proportions &mdash; magazine masthead energy. Full family available in 8 weights (Hairline &rarr; Medium, with Italic variants on each) for a refined visual system across headlines, pull-quotes, callouts, and body accents.</div>
       </div>
       <div class="font-panel">
         <div class="role">Body / Sans-Serif &mdash; Outfit</div>
