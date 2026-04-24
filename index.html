@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Living With Ease — Website Redesign Proposal (Round 1)</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Outfit:wght@200;300;400;500;600&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;1,6..96,400;1,6..96,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -83,13 +83,15 @@ h1, h2, h3, h4 {
   margin-bottom: 32px;
 }
 .hero h1 {
-  font-size: clamp(2.8rem, 6vw, 4.5rem);
+  font-family: 'Bodoni Moda', 'Cormorant Garamond', serif;
+  font-size: clamp(3rem, 6.8vw, 5rem);
   color: var(--cream);
-  font-weight: 300;
+  font-weight: 400;
   margin-bottom: 24px;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.015em;
+  line-height: 1.02;
 }
-.hero h1 em { font-style: italic; color: var(--sage-muted); }
+.hero h1 em { font-style: italic; color: var(--cream); font-weight: 400; }
 .hero .subtitle {
   font-size: 1.05rem;
   color: rgba(248,246,241,0.65);
@@ -199,6 +201,32 @@ h1, h2, h3, h4 {
   max-width: 620px;
   line-height: 1.7;
 }
+.direction-note {
+  background: var(--cream-warm);
+  border-left: 2px solid var(--gold);
+  padding: 24px 28px;
+  margin: 24px 0 32px;
+  max-width: 720px;
+}
+.direction-note .dn-label {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+.direction-note p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--charcoal);
+  font-style: italic;
+}
+.direction-note p strong { font-style: normal; font-weight: 500; }
+.direction-note p em { font-style: normal; color: var(--text-soft); }
 
 /* ============================================
    STATS ROW
@@ -342,11 +370,12 @@ h1, h2, h3, h4 {
   font-weight: 500;
 }
 .font-panel .sample-script {
-  font-family: 'Caveat', cursive;
-  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-family: 'Bodoni Moda', 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 4vw, 3.2rem);
   color: var(--charcoal);
-  line-height: 1.2;
-  font-weight: 500;
+  line-height: 1.05;
+  font-weight: 400;
+  letter-spacing: -0.01em;
 }
 .font-panel .sample-display {
   font-family: 'Cormorant Garamond', serif;
@@ -784,7 +813,7 @@ textarea::placeholder, input::placeholder { color: var(--text-muted); font-weigh
     <div class="round-badge">Round 1 of 2</div>
     <div class="hero-eyebrow">Website Redesign Proposal</div>
     <h1>Living With <em>Ease</em></h1>
-    <p class="subtitle">An art-directed redesign for Jayne Steinberg's transformational healing practice. This is Round 1 &mdash; your feedback shapes what comes next.</p>
+    <p class="subtitle">An editorial, art-directed redesign for Jayne Steinberg &mdash; positioning her transformational work with the visual polish of a luxury lifestyle brand. This is Round 1; your feedback shapes what comes next.</p>
     <p class="meta">Prepared by Jamie Crowley &amp; ArkData &bull; April 2026</p>
     <div class="divider-line"></div>
   </div>
@@ -900,7 +929,13 @@ textarea::placeholder, input::placeholder { color: var(--text-muted); font-weigh
   <div class="container">
     <div class="section-eyebrow">Brand Board</div>
     <h2>Your <em>Color Story</em></h2>
-    <p class="lead">Extracted from your current site and deepened into a cohesive 8-color palette. The sage green (#99ad68) you already use is the anchor &mdash; we've built an earthy, grounded color story around it.</p>
+
+    <div class="direction-note">
+      <div class="dn-label">Positioning Direction</div>
+      <p>This brand reads <strong>editorial luxury</strong>, not wellness-clinic. Jayne's work is transformational &mdash; but the visual world should feel at home next to Town &amp; Country, <em>The Cut</em>, or a Jane Seymour editorial spread. Think old-money polish with a spiritual undercurrent, never earth-child. Palette, typography, and imagery all lean to refined restraint.</p>
+    </div>
+
+    <p class="lead">Extracted from your current site and elevated into a cohesive 8-color palette. The sage green (#99ad68) you already use is the anchor &mdash; we've built a refined, editorial color story around it that reads upmarket rather than earthy-healing.</p>
 
     <div class="color-story">
       <div class="color-swatch-card" style="background: #8a9a5b;">
@@ -952,22 +987,22 @@ textarea::placeholder, input::placeholder { color: var(--text-muted); font-weigh
 
     <!-- Font Pairing -->
     <h3 class="sub-heading">Font Pairing</h3>
-    <p class="sub-desc">Jamie's process: 1 script/cursive font for warmth and personality + 1 clean sans-serif for body readability. We're proposing this initial pairing &mdash; the final fonts will be sourced from Creative Market and screenshotted in Jayne's actual brand words for approval.</p>
+    <p class="sub-desc">Jamie's process: one high-contrast editorial display for the wordmark and headline moments + one clean sans-serif for body readability. The final wordmark font &mdash; <em>Editor's Note Display</em> from Creative Market &mdash; will be licensed and screenshotted in Jayne's actual brand words for approval. The sample below approximates its spirit using Bodoni Moda.</p>
 
     <div class="font-pairing">
       <div class="font-panel">
-        <div class="role">Script / Display &mdash; Caveat</div>
-        <div class="sample-script">Living With Ease</div>
-        <div class="font-note">Warm, handwritten energy. Approachable but not childish. Shown here as a placeholder &mdash; the final script font will be sourced from Creative Market and tailored to Jayne's brand voice.</div>
+        <div class="role">Display / Wordmark &mdash; Editor's Note Display</div>
+        <div class="sample-script">living with ease</div>
+        <div class="font-note">High-contrast editorial serif with hairline terminals and luxe proportions. Think magazine masthead, not yoga studio. Available in 8 weights (Hairline &rarr; Medium, with Italic variants) for a refined visual system. Creative Market license via Jamie.</div>
       </div>
       <div class="font-panel">
         <div class="role">Body / Sans-Serif &mdash; Outfit</div>
         <div class="sample-body">Real change does not happen by trying harder. It happens when those patterns are addressed at their root. We work together to recalibrate the internal patterns shaping your decisions, relationships, and the way you design your life.</div>
-        <div class="font-note">Clean, modern, highly legible at all sizes. Light weight for an airy, spacious feel.</div>
+        <div class="font-note">Clean, modern, highly legible at all sizes. Light weight for an airy, spacious feel that reads upmarket rather than wellness-clinic.</div>
       </div>
     </div>
 
-    <p class="sub-desc" style="margin-top: 8px;">We may also incorporate Cormorant Garamond as a third font for editorial display moments (large pull quotes, section headers) if the design calls for it.</p>
+    <p class="sub-desc" style="margin-top: 8px;">Cormorant Garamond remains as a complementary editorial serif for long-form pull quotes and section-opening moments where Editor's Note Display would feel too heavy.</p>
 
     <div class="comment-area flush">
       <label>Your Feedback on Typography</label>
@@ -976,7 +1011,7 @@ textarea::placeholder, input::placeholder { color: var(--text-muted); font-weigh
 
     <!-- Motif & Texture -->
     <h3 class="sub-heading">Theme Motif &amp; Textures</h3>
-    <p class="sub-desc">Every strong brand has a visual thread that runs through it. Based on Jayne's work &mdash; transformational healing, nervous system recalibration, and returning to your authentic self &mdash; we're proposing a core motif and supporting texture language.</p>
+    <p class="sub-desc">Every strong brand has a visual thread that runs through it. Based on Jayne's work &mdash; nervous system recalibration and a return to your most authentic self &mdash; we're proposing a core motif and supporting texture language, filtered through an editorial luxury lens.</p>
 
     <div class="motif-grid">
       <div class="motif-cell">
