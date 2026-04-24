@@ -83,15 +83,15 @@ h1, h2, h3, h4 {
   margin-bottom: 32px;
 }
 .hero h1 {
-  margin: 0 auto 32px;
-  max-width: min(720px, 85vw);
-  line-height: 0;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.8rem, 6vw, 4.5rem);
+  color: var(--cream);
+  font-weight: 300;
+  margin-bottom: 24px;
+  letter-spacing: -0.015em;
+  line-height: 1.05;
 }
-.hero h1 img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
+.hero h1 em { font-style: italic; color: var(--cream); font-weight: 300; }
 .hero .subtitle {
   font-size: 1.05rem;
   color: rgba(248,246,241,0.65);
@@ -846,9 +846,7 @@ textarea::placeholder, input::placeholder { color: var(--text-muted); font-weigh
   <div class="hero-content">
     <div class="round-badge">Round 1 of 2</div>
     <div class="hero-eyebrow">Website Redesign Proposal</div>
-    <h1>
-      <img src="assets/fonts/hero-wordmark-cream.png" alt="living with ease" />
-    </h1>
+    <h1>Living With <em>Ease</em></h1>
     <p class="subtitle">An editorial, art-directed redesign for Jayne Steinberg &mdash; positioning her transformational work with the visual polish of a luxury lifestyle brand. This is Round 1; your feedback shapes what comes next.</p>
     <p class="meta">Prepared by Jamie Crowley &amp; ArkData &bull; April 2026</p>
     <div class="divider-line"></div>
